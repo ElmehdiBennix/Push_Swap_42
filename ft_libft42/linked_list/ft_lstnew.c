@@ -6,11 +6,11 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 02:37:18 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/21 04:45:46 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/02/21 20:49:52 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 t_list *ft_lstnew(void *content)
 {

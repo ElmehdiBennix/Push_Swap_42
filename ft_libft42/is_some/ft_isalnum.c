@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/30 01:07:37 by ebennix           #+#    #+#             */
-/*   Updated: 2022/11/07 21:46:59 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/07 11:19:13 by ebennix           #+#    #+#             */
+/*   Updated: 2023/02/21 20:49:22 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_isalnum(int c)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i] != '\0')
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	if ((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }
