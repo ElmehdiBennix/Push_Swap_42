@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstcreate_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 04:50:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/22 05:14:18 by ebennix          ###   ########.fr       */
+/*   Created: 2023/02/22 05:09:25 by ebennix           #+#    #+#             */
+/*   Updated: 2023/02/22 05:13:24 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../libft.h"
+#include "../libft.h"
 
-int ft_lstsize(t_list *lst)
+void ft_lstcreate_front(t_list **lst, void *content)
 {
-    int i;
+    t_list *front;
 
-    i = 0;
-    while(lst)
-    {
-        lst = lst -> next;
-        i++;
-    }
-    return (i);
+    front = ft_lstnew(content);
+    ft_lstadd_front(&lst, front);
 }
