@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/25 10:22:45 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/20 20:27:41 by ebennix           #+#    #+#             */
+/*   Updated: 2022/11/07 22:14:43 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "libft.h"
 
-int main (int ac, char **av)
+char	*ft_strrchr(const char *s, int c)
 {
-    
+	int	len;
+
+	len = ft_strlen((char *)s);
+	while (len >= 0)
+	{
+		if (s[len] == (char)c)
+			return ((char *)&s[len]);
+		len--;
+	}
+	return (NULL);
 }

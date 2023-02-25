@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/25 10:22:45 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/30 02:41:38 by ebennix           #+#    #+#             */
+/*   Updated: 2023/02/22 05:38:53 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "libft.h"
 
-int main (int ac, char **av)
+void	ft_putendl_fd(char *s, int fd)
 {
-    
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

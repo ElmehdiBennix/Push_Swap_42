@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/25 10:22:45 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/22 22:10:49 by ebennix           #+#    #+#             */
+/*   Updated: 2022/11/07 20:53:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "libft.h"
 
-int main (int ac, char **av)
+void	*ft_calloc(size_t nelem, size_t size)
 {
-    
+	void	*p;
+
+	p = (char *)malloc ((nelem * size) * sizeof(char));
+	if (!p)
+		return (0);
+	ft_bzero(p, (nelem * size));
+	return (p);
 }

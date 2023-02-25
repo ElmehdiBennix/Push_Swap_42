@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/25 10:22:45 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/22 22:10:41 by ebennix           #+#    #+#             */
+/*   Updated: 2022/11/07 21:52:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "libft.h"
 
-int main (int ac, char **av)
+char	*ft_strdup(const char *s)
 {
-    
+	size_t	i;
+	char	*dub;
+
+	i = 0;
+	dub = (char *)malloc((ft_strlen(s)+ 1) * sizeof(char));
+	if (!dub)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		dub[i] = s[i];
+		i++;
+	}
+	dub[i] = '\0';
+	return (dub);
 }
