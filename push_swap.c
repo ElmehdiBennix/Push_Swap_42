@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/25 17:10:41 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/02/28 16:46:29 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,76 @@
 
 int main (int ac, char **av)
 {
+    printf("%d\n",ac);
+
+    char *tmp;
+    int err = 0;
     int i;
-    int j;
-    
-    i = 0;
-    j = 0;
-    while (av[j])
+    int totaldig = 0;
+
+
+    while (*(++av))
     {
-        while (*av[i] != '\0')
+        tmp = *av;
+        if (*tmp == '\0')
+            err++;
+        while (*tmp != '\0')
         {
-            while (*av[i] == ' ')
-                i++;
-            if (ft_isdigit(*av[i]) == 1)
-                while(ft_isdigit(*av[i]))
-                        i++;
-            else if (*av[i] == '-')
+            i = 0;
+            while (*tmp == ' ')
             {
-                i++;
-                if (ft_isdigit(*av[i]))
-                    while(ft_isdigit(*av[i]))
-                        i++;
-                else
-                    write(2,"error\n",7);
+                tmp++;
+                if(*tmp == '\0' && totaldig == 0)
+                    err++;
             }
-            else
-                write(2,"error\n",7);
+            if (ft_isdigit(*tmp))
+            {
+                while (ft_isdigit(*tmp))
+                {
+                        i++;
+                        totaldig++;
+                        tmp++;
+                }
+                printf("i = %d and totaldig = %d\n",i,totaldig);
+            }
+            else if (*tmp == '+')
+            {
+                tmp++;
+                if(ft_isdigit(*tmp))
+                {
+                    while (ft_isdigit(*tmp) && i > 0)
+                        err++;
+                }
+                if (*tmp ==  '\0')
+                    err++;
+                if (*tmp == ' ')
+                    err++;
+                else if (*tmp == '+' || *tmp == '-')
+                    err++;
+
+            }
+            else if (*tmp == '-')
+            {
+                tmp++;
+                if(ft_isdigit(*tmp))
+                {
+                    while (i > 0 && ft_isdigit(*tmp) == 1)
+                    {
+                        printf("\n -entered :\n");
+                        err++;
+                    }
+                }
+                if (*tmp ==  '\0')
+                    err++;
+                if (*tmp == ' ')
+                    err++;
+                else if (*tmp == '+' || *tmp == '-')
+                    err++;
+            }
+            
         }
-        j++;
+        printf("\n -error counter : %d\n",err);
     }
-    // if(ft_isdigit(*av) == 1)
-    //     printf("2 is %c\n",s); // ok we check on all args if they are digit first then we continue
+    // bennix@MehdiPC ~/myProjects/Push_swap42$ ./a.out  "    +-455  41+455     "                                                                                                                                 ✹main 
         
 }
