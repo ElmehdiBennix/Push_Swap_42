@@ -3,87 +3,100 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/28 16:46:29 by bennix           ###   ########.fr       */
+/*   Updated: 2023/03/01 22:23:55 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
+
+void exitmsg(int err)
+{
+    write(2,"error\n",7);
+    exit(err);
+}
+void ()
+{
+    
+}
+
 
 int main (int ac, char **av)
 {
     printf("%d\n",ac);
 
     char *tmp;
-    int err = 0;
-    int i;
-    int totaldig = 0;
-
+    int allowed;
 
     while (*(++av))
     {
         tmp = *av;
+        allowed = 0;
         if (*tmp == '\0')
-            err++;
+            exitmsg(1);
         while (*tmp != '\0')
         {
-            i = 0;
+            if (*tmp == ' ') 
+                tmp++;
+            else if(ft_isdigit(*tmp) || *tmp == '+' || *tmp == '-')
+            {
+                allowed++;
+                tmp++;
+            }
+            else
+                exitmsg(2);
+        }
+        if (allowed == 0)
+            exitmsg(3);
+        tmp = *av;
+        while (*tmp != '\0')
+        {
+            allowed = 0;
             while (*tmp == ' ')
-            {
                 tmp++;
-                if(*tmp == '\0' && totaldig == 0)
-                    err++;
-            }
-            if (ft_isdigit(*tmp))
+            while (ft_isdigit(*tmp))
             {
-                while (ft_isdigit(*tmp))
-                {
-                        i++;
-                        totaldig++;
-                        tmp++;
-                }
-                printf("i = %d and totaldig = %d\n",i,totaldig);
-            }
-            else if (*tmp == '+')
-            {
+                allowed++;
                 tmp++;
-                if(ft_isdigit(*tmp))
+            }
+            if (*tmp == '+')
+            {
+                 tmp++;
+                if (ft_isdigit(*tmp))
                 {
-                    while (ft_isdigit(*tmp) && i > 0)
-                        err++;
+                    if (allowed > 0)
+                        exitmsg(4);
+                    tmp++;
                 }
-                if (*tmp ==  '\0')
-                    err++;
-                if (*tmp == ' ')
-                    err++;
+                else if (*tmp == '\0')
+                    exitmsg(5);
+                else if (*tmp == ' ')
+                    exitmsg(6);
                 else if (*tmp == '+' || *tmp == '-')
-                    err++;
-
+                    exitmsg(7);
             }
             else if (*tmp == '-')
             {
                 tmp++;
-                if(ft_isdigit(*tmp))
+                if (ft_isdigit(*tmp))
                 {
-                    while (i > 0 && ft_isdigit(*tmp) == 1)
-                    {
-                        printf("\n -entered :\n");
-                        err++;
-                    }
+                    if (allowed > 0)
+                        exitmsg(8);
+                    tmp++;
                 }
-                if (*tmp ==  '\0')
-                    err++;
-                if (*tmp == ' ')
-                    err++;
+                else if (*tmp == '\0')
+                    exitmsg(9);
+                else if (*tmp == ' ')
+                    exitmsg(10);
                 else if (*tmp == '+' || *tmp == '-')
-                    err++;
+                    exitmsg(11);
             }
-            
         }
-        printf("\n -error counter : %d\n",err);
+        printf("passed\n");
     }
-    // bennix@MehdiPC ~/myProjects/Push_swap42$ ./a.out  "    +-455  41+455     "                                                                                                                                 ✹main 
-        
 }
+    // ./a.out  "    +-455  41+455     "    
+    // ./a.out  "  000014   +47  -24   +-  9- 9+   --89 ++89  " 
+    //  split them atoi  check // max int // min int // 00006
