@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/01 22:23:55 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/01 22:33:18 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,11 @@
 
 void exitmsg(int err)
 {
-    write(2,"error\n",7);
+    write(2,"Error\n",7);
     exit(err);
 }
-void ()
+void parsing(char **av)
 {
-    
-}
-
-
-int main (int ac, char **av)
-{
-    printf("%d\n",ac);
-
     char *tmp;
     int allowed;
 
@@ -97,6 +89,16 @@ int main (int ac, char **av)
         printf("passed\n");
     }
 }
-    // ./a.out  "    +-455  41+455     "    
-    // ./a.out  "  000014   +47  -24   +-  9- 9+   --89 ++89  " 
-    //  split them atoi  check // max int // min int // 00006
+
+void push_swap(int ac, char **av)
+{
+    parsing(av);
+}
+
+int main (int ac, char **av)
+{
+    push_swap(ac,av);
+}
+
+//  split them atoi  check // 00006 turn it to 6 or +00006 turn it to +6
+// check for dubs and int max and int min
