@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/01 22:33:18 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/01 22:36:08 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void parsing(char **av)
 
 void push_swap(int ac, char **av)
 {
-    parsing(av);
+    parsing(av); // if it passed means arguments are valid 
 }
 
 int main (int ac, char **av)
@@ -100,5 +100,5 @@ int main (int ac, char **av)
     push_swap(ac,av);
 }
 
-//  split them atoi  check // 00006 turn it to 6 or +00006 turn it to +6
-// check for dubs and int max and int min
+// split them atoi  check // 00006 turn it to 6 or +00006 turn it to +6
+// check for dubs and int max and int min with strcmp after split
