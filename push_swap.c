@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/02 03:33:02 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:17:18 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,67 +90,59 @@ void parsing(char **av)
     }
 }
 
-char * add_sign(char *p) //remove zeros  signzero
-{
-    char *str = NULL;
-    char *arrow;
-    
-    arrow = ++p;
-    while (*p == ' ')
-        p++;
-    if (*p == '-')
-    {
-        p++;
-        while(*p)
-        {
-            if (*p == '0' && *arrow == '\0')
-            {
-                return (ft_strdup(p));
-            }
-            else if (*p == '0')
-                p++;
-        }
-        str = ft_strjoin("-", p);
-    }
-    else if (*p == '+')
-    {
-        p++;
-         while(*p)
-        {
-            if (*p == '0' && *arrow == '\0')
-            {
-                return (ft_strdup(p));
-            }
-            else if (*p == '0')
-                p++;
-        }
-        str = ft_strjoin("+", p);
-    }
-    else if (ft_isdigit(*p))
-    {
-        while(*p)
-        {
-            if (*p == '0' && *arrow == '\0')
-            {
-                return (ft_strdup(p));
-            }
-            else if (*p == '0')
-                p++;
-        }
-        str = ft_strjoin("-", p);
-    }
-    return (str);
-}
+// char *add_sign(char *p) //remove zeros  signzero
+// {
+//     char sign;
+
+//     if (*p && *p == ' ')
+//         while (*p && *p == ' ')
+//             p++;
+//     if (*p == '-')
+//     {
+//         sign = '-';
+//         p++;
+//         while (*p)
+//         {
+//             if (*p == '0')
+//             {
+//                 p++;
+//                 if (*p == '\0')
+//                     return (ft_strdup(--p));
+//             }
+//             else
+//                 break;
+//         }
+//     }
+//     else if (*p == '+' || ft_isdigit(*p))
+//     {
+//         sign = '+';
+//         if (*p == '+')
+//             p++;
+//         while (*p)
+//         {
+//             if (*p == '0')
+//             {
+//                 p++;
+//                 if (*p == '\0')
+//                     return (ft_strdup(--p));
+//             }
+//             else
+//                 break;
+//         }
+//     }
+//     return (ft_strjoin(&sign,p));
+// }
+
 char *joinning(int ac , char **av)
 {
     int i;
     char *p;
     char *str1;
-
     i = 1;
+
     while (*(++av) && ac > i)
     {
-        p = add_sign(*av);
+        p = *av;//add_sign(*av);
         if (i == 1)
             str1 = ft_strdup(p);
         else
@@ -162,16 +154,16 @@ char *joinning(int ac , char **av)
     }
     printf("%s",str1);
     return (str1);
-
+    return (p);
 }
 
 void push_swap(int ac, char **av)
 {
     char *res;
-    char **spl;
+    // char **spl;
     parsing(av); // if it passed means arguments are valid
     res = joinning(ac, av); //joinning for the split
-    spl = ft_split(res , ' ');
+    // spl = ft_split(res , ' ');
     
 }
 
@@ -188,3 +180,6 @@ int main (int ac, char **av)
 // check for dubs and int max and int min with strcmp after split
 
 // "       14        411   " "       45  87 9 9 11" "14   -45  65"
+
+
+// have to split then i can remove 000 from every argument
