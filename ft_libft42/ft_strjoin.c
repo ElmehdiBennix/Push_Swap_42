@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:52:57 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/02 02:34:46 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/02 03:02:01 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char			*str;
 	size_t			len;

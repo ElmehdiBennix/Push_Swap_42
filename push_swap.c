@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/02 02:36:26 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/02 03:09:25 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,31 @@ void parsing(char **av)
     }
 }
 
-char *splitting(int ac , char **av)
+char * add_sign(char *p)
+{
+    char *str = NULL;
+    
+    while (*p == ' ')
+        p++;
+    if (*p == '-')
+        return (p);
+    else if (*p == '+')
+        return (p);
+    else if (ft_isdigit(*p))
+        str = ft_strjoin("+", p);
+    return (str);
+}
+char *joinning(int ac , char **av)
 {
     int i;
+    char *p;
     char *str1;
 
-    char *p;
-
     i = 1;
-    printf("\n splitting : %d \n",ac);
     while (*(++av) && ac > i)
     {
-        printf("\n *** ac : %d > i : %d \n \n",ac,i);
         p = *av;
-        printf("--pinter %s \n",p);
+        p = add_sign(p);
         if (i == 1)
             str1 = ft_strdup(p);
         else
@@ -111,19 +122,18 @@ char *splitting(int ac , char **av)
             str1 = ft_strjoin(str1 , "  "); // adding 2 spaces to seperate incase ;)
             str1 = ft_strjoin(str1 , p); // tmp to free leaks hir
         }
-        printf("%s \n",str1);
         i++;
     }
+    printf("%s",str1);
     return (str1);
 
 }
 
 void push_swap(int ac, char **av)
 {
-    char *res;
-    printf("%d\n \n",ac);
+    // char *res;
     parsing(av); // if it passed means arguments are valid
-    res = splitting(ac, av);
+    joinning(ac, av); //joinning for the split
 }
 
 int main (int ac, char **av)
