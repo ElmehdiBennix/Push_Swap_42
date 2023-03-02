@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/02 03:09:25 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/02 03:13:06 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,7 @@ char *joinning(int ac , char **av)
     i = 1;
     while (*(++av) && ac > i)
     {
-        p = *av;
-        p = add_sign(p);
+        p = add_sign(*av);
         if (i == 1)
             str1 = ft_strdup(p);
         else
@@ -131,9 +130,11 @@ char *joinning(int ac , char **av)
 
 void push_swap(int ac, char **av)
 {
-    // char *res;
+    char *res;
+    char **spl;
     parsing(av); // if it passed means arguments are valid
-    joinning(ac, av); //joinning for the split
+    res = joinning(ac, av); //joinning for the split
+    spl = ft_split(res , ' ');
 }
 
 int main (int ac, char **av)
