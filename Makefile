@@ -1,16 +1,7 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/20 21:51:22 by ebennix           #+#    #+#              #
-#    Updated: 2023/02/22 05:18:03 by ebennix          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 EXE := push_swap
+
+LIB := ft_libft42/libft.a
 
 CC := cc
 
@@ -18,7 +9,7 @@ CFLAGS := -g -Wall -Wextra -Werror
 
 HEADER := push_swap.h
 
-FILES := 
+FILES := push_swap
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)
@@ -29,17 +20,22 @@ m := MakefileAutoPush
 
 all : $(EXE)
 
-$(EXE) : $(OBJ)
-	$(CC) $(OBJ) -o $(EXE)
+$(EXE) : $(OBJ) $(LIB)
+	$(CC) $(OBJ) $(LIB) -o $(EXE)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(LIB) :
+	cd ft_libft42 && $(MAKE)
+
 clean :
 	$(RM) $(OBJ)
+	cd ft_libft42 && $(RM) *.o
 
 fclean : clean
 	$(RM) $(EXE)
+	cd ft_libft42 && $(RM) *.a
 
 re : fclean all
 
@@ -50,4 +46,5 @@ git :
 	git push
 
 .PHONY : all clean fclean re git
+
 
