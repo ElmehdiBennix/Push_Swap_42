@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/02 03:13:06 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/02 03:33:02 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,18 +90,55 @@ void parsing(char **av)
     }
 }
 
-char * add_sign(char *p)
+char * add_sign(char *p) //remove zeros  signzero
 {
     char *str = NULL;
+    char *arrow;
     
+    arrow = ++p;
     while (*p == ' ')
         p++;
     if (*p == '-')
-        return (p);
+    {
+        p++;
+        while(*p)
+        {
+            if (*p == '0' && *arrow == '\0')
+            {
+                return (ft_strdup(p));
+            }
+            else if (*p == '0')
+                p++;
+        }
+        str = ft_strjoin("-", p);
+    }
     else if (*p == '+')
-        return (p);
-    else if (ft_isdigit(*p))
+    {
+        p++;
+         while(*p)
+        {
+            if (*p == '0' && *arrow == '\0')
+            {
+                return (ft_strdup(p));
+            }
+            else if (*p == '0')
+                p++;
+        }
         str = ft_strjoin("+", p);
+    }
+    else if (ft_isdigit(*p))
+    {
+        while(*p)
+        {
+            if (*p == '0' && *arrow == '\0')
+            {
+                return (ft_strdup(p));
+            }
+            else if (*p == '0')
+                p++;
+        }
+        str = ft_strjoin("-", p);
+    }
     return (str);
 }
 char *joinning(int ac , char **av)
@@ -135,6 +172,7 @@ void push_swap(int ac, char **av)
     parsing(av); // if it passed means arguments are valid
     res = joinning(ac, av); //joinning for the split
     spl = ft_split(res , ' ');
+    
 }
 
 int main (int ac, char **av)
