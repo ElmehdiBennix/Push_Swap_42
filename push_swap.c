@@ -6,7 +6,7 @@
 /*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/02 17:10:50 by bennix           ###   ########.fr       */
+/*   Updated: 2023/03/03 21:34:45 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,7 +175,6 @@ void push_swap(int ac, char **av)
         }
         spl++;
     }
-    
 }
 
 int main (int ac, char **av)
