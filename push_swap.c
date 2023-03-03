@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/02 15:17:18 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/02 17:10:50 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,48 +90,47 @@ void parsing(char **av)
     }
 }
 
-// char *add_sign(char *p) //remove zeros  signzero
-// {
-//     char sign;
-
-//     if (*p && *p == ' ')
-//         while (*p && *p == ' ')
-//             p++;
-//     if (*p == '-')
-//     {
-//         sign = '-';
-//         p++;
-//         while (*p)
-//         {
-//             if (*p == '0')
-//             {
-//                 p++;
-//                 if (*p == '\0')
-//                     return (ft_strdup(--p));
-//             }
-//             else
-//                 break;
-//         }
-//     }
-//     else if (*p == '+' || ft_isdigit(*p))
-//     {
-//         sign = '+';
-//         if (*p == '+')
-//             p++;
-//         while (*p)
-//         {
-//             if (*p == '0')
-//             {
-//                 p++;
-//                 if (*p == '\0')
-//                     return (ft_strdup(--p));
-//             }
-//             else
-//                 break;
-//         }
-//     }
-//     return (ft_strjoin(&sign,p));
-// }
+char *add_sign(char *p) //remove zeros  signzero
+{
+    char sign;
+    if (*p && *p == ' ')
+        while (*p && *p == ' ')
+            p++;
+    if (*p == '-')
+    {
+        sign = '-';
+        p++;
+        while (*p)
+        {
+            if (*p == '0')
+            {
+                p++;
+                if (*p == '\0')
+                    return (ft_strdup(--p));
+            }
+            else
+                break;
+        }
+    }
+    else if (*p == '+' || ft_isdigit(*p))
+    {
+        sign = '+';
+        if (*p == '+')
+            p++;
+        while (*p)
+        {
+            if (*p == '0')
+            {
+                p++;
+                if (*p == '\0')
+                    return (ft_strdup(--p));
+            }
+            else
+                break;
+        }
+    }
+    return (ft_strjoin(&sign,p));
+}
 
 char *joinning(int ac , char **av)
 {
@@ -142,7 +141,7 @@ char *joinning(int ac , char **av)
 
     while (*(++av) && ac > i)
     {
-        p = *av;//add_sign(*av);
+        p = add_sign(*av);
         if (i == 1)
             str1 = ft_strdup(p);
         else
@@ -152,18 +151,30 @@ char *joinning(int ac , char **av)
         }
         i++;
     }
-    printf("%s",str1);
+    printf("%s\n\n",str1);
     return (str1);
     return (p);
 }
 
 void push_swap(int ac, char **av)
 {
-    char *res;
-    // char **spl;
-    parsing(av); // if it passed means arguments are valid
-    res = joinning(ac, av); //joinning for the split
-    // spl = ft_split(res , ' ');
+    char **spl;
+    char *str2;
+
+
+    parsing (av); // if it passed means arguments are valid
+    char *res = joinning(ac, av); //joinning for the split
+    spl = ft_split(res , ' ');
+    while (*spl)
+    {
+        str2 = *spl;
+        while (*(++spl))
+        {
+            if (ft_strncmp(str2,*spl,ft_strlen(str2)) == 0)
+                exitmsg(1);
+        }
+        spl++;
+    }
     
 }
 
@@ -176,10 +187,5 @@ int main (int ac, char **av)
     // printf("%s",++av);
 }
 
-// split them atoi  check // 00006 turn it to 6 or +00006 turn it to +6
+// split them atoi
 // check for dubs and int max and int min with strcmp after split
-
-// "       14        411   " "       45  87 9 9 11" "14   -45  65"
-
-
-// have to split then i can remove 000 from every argument

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 05:07:00 by ebennix           #+#    #+#             */
-/*   Updated: 2022/11/08 21:18:40 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/02 16:29:09 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,11 @@ int	ft_atoi(const char *str)
 	int			i;
 	int			sign;
 	long long	res;
-	long long	acc;
 	int			overflow;
 
 	i = 0;
 	sign = 1;
 	res = 0;
-	acc = 0;
 	overflow = 0;
 	i = skip(str, i);
 	i = signop(str, i, &sign);
