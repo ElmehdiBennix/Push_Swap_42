@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/03 21:34:45 by bennix           ###   ########.fr       */
+/*   Updated: 2023/03/04 05:50:07 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,14 @@ void parsing(char **av)
 
 char *add_sign(char *p) //remove zeros  signzero
 {
-    char sign;
+    char *sign = NULL;
+
     if (*p && *p == ' ')
         while (*p && *p == ' ')
             p++;
     if (*p == '-')
     {
-        sign = '-';
+        sign = "-";
         p++;
         while (*p)
         {
@@ -114,7 +115,7 @@ char *add_sign(char *p) //remove zeros  signzero
     }
     else if (*p == '+' || ft_isdigit(*p))
     {
-        sign = '+';
+        sign = "+";
         if (*p == '+')
             p++;
         while (*p)
@@ -129,51 +130,55 @@ char *add_sign(char *p) //remove zeros  signzero
                 break;
         }
     }
-    return (ft_strjoin(&sign,p));
+    return (ft_strjoin(sign,p));
 }
 
-char *joinning(int ac , char **av)
+char **joinning(int ac , char **av)
 {
     int i;
-    char *p;
     char *str1;
-    i = 1;
+    char **spl;
 
+    i = 1;
     while (*(++av) && ac > i)
     {
-        p = add_sign(*av);
         if (i == 1)
-            str1 = ft_strdup(p);
+            str1 = ft_strdup(*av);
         else
         {
-            str1 = ft_strjoin(str1 , "  "); // adding 2 spaces to seperate incase ;)
-            str1 = ft_strjoin(str1 , p); // tmp to free leaks hir
+            str1 = ft_strjoin(str1 , " "); // adding 2 spaces to seperate incase ;)
+            str1 = ft_strjoin(str1 , *av); // tmp to free leaks hir
         }
         i++;
     }
     printf("%s\n\n",str1);
-    return (str1);
-    return (p);
+    spl = ft_split(str1 , ' ');
+    while (*spl)
+    {
+        *spl = add_sign(*spl);
+        printf("%s\n", *spl);
+        spl++;
+    }
+    return (spl);
 }
 
 void push_swap(int ac, char **av)
 {
-    char **spl;
-    char *str2;
-
+    // char **spl;
+    char **res ;
+    char *p;
 
     parsing (av); // if it passed means arguments are valid
-    char *res = joinning(ac, av); //joinning for the split
-    spl = ft_split(res , ' ');
-    while (*spl)
+    res = joinning(ac, av); //joinning for the split
+    while (*res)
     {
-        str2 = *spl;
-        while (*(++spl))
+        p = *res;
+        while(++p)
         {
-            if (ft_strncmp(str2,*spl,ft_strlen(str2)) == 0)
+            if (ft_strncmp(*res,p,ft_strlen(*res)) == 0)
                 exitmsg(1);
         }
-        spl++;
+        res++;
     }
 }
 
