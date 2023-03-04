@@ -9,7 +9,7 @@ CFLAGS := -g -Wall -Wextra
 
 HEADER := push_swap.h
 
-FILES := push_swap
+FILES := push_swap utils/ft_atoi \
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)

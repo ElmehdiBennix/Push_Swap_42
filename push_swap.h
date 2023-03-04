@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/25 10:21:37 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/04 09:30:09 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 
 #include <stdio.h>
 #include "ft_libft42/libft.h"
+
+void failure(int err);
+int	ft_atoi(char *str);
 
 #endif

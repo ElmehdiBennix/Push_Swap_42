@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/22 04:53:15 by ebennix           #+#    #+#              #
-#    Updated: 2023/02/25 08:08:34 by ebennix          ###   ########.fr        #
+#    Updated: 2023/03/04 09:41:09 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ HEADER := libft.h
 
 CC := cc
 
-FILES := ft_atoi		 ft_itoa	        ft_putnbr_fd	     ft_strlcpy		   ft_tolower	   \
+FILES := 		 ft_itoa	        ft_putnbr_fd	     ft_strlcpy		   ft_tolower	   \
 		 ft_bzero	     ft_memchr	     	ft_putstr_fd	     ft_strlen	 	   ft_toupper	   \
 		 ft_calloc	     ft_memcmp	     	ft_split	         ft_strmapi		   ft_substr	   \
 		 ft_isalnum	     ft_memcpy	     	ft_strchr	       	 ft_strncmp		   ft_substr	   \

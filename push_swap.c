@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 08:04:42 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/04 09:56:19 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void failure(int err)
     exit(err);
 }
 
-void parsing(char **av)
+void check_valid(char **av) // check for valid arguments
 {
     char *tmp;
-    size_t allowed;
+    unsigned int allowed;
 
     while (*(++av))
     {
@@ -90,7 +90,7 @@ void parsing(char **av)
     }
 }
 
-char *sign_zero(char *p) //remove zeros  signzero
+char *sign_zero(char *p) //remove zeros and add signs
 {
     char *sign = NULL;
 
@@ -171,7 +171,7 @@ char **joinning(int ac , char **av)
         p = res;
         while(*(++p))
             if (ft_strncmp(*res,*p,ft_strlen(*res)) == 0 && ft_strncmp(*res,*p,ft_strlen(*p)) == 0)
-                failure(1);
+                failure(12);
         res++;
         i++;
     }
@@ -183,10 +183,17 @@ int push_swap(int ac, char **av)
 {
     char **res ;
 
-
-    parsing (av); // if it passed means arguments are valid
+    check_valid (av); // if it passed means arguments are valid
     res = joinning(ac, av); //joinning for the split
-
+    t_list *root = ft_lstnew(ft_atoi(*res));
+    while(*(++res))
+        ft_lstcreate_back(&root,ft_atoi(*res));
+    t_list *arrow = root;
+    while (arrow)
+    {
+        printf("%d\n",arrow -> content);
+        arrow = arrow -> next;
+    }
     return (0);
 }
 
@@ -200,11 +207,3 @@ int main (int ac, char **av)
     
     return (err);
 }
-
-
-// split them atoi
-// atoi then check for max min int in linked list loop
-        // if (ft_strncmp(*res,"+2147483647",12) == 0)
-        //         exitmsg(1);
-        // if (ft_strncmp(*res,"-2147483648",12) == 0)   
-        //         exitmsg(1);
