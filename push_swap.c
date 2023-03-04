@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 08:03:23 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/04 08:04:42 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void parsing(char **av)
                     failure(11);
             }
         }
-        printf("passed\n");
     }
 }
 
@@ -203,9 +202,8 @@ int main (int ac, char **av)
 }
 
 
-
 // split them atoi
-// // atoi then check for max min int in linked list loop
+// atoi then check for max min int in linked list loop
         // if (ft_strncmp(*res,"+2147483647",12) == 0)
         //         exitmsg(1);
         // if (ft_strncmp(*res,"-2147483648",12) == 0)   
