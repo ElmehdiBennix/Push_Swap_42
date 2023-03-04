@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 09:59:03 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/04 10:05:15 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,7 @@ int push_swap(int ac, char **av)
 
     check_valid (av); // if it passed means arguments are valid
     res = joinning(ac, av); //joinning for the split
+
     t_list *root = ft_lstnew(ft_atoi(*res));
     while(*(++res))
         ft_lstcreate_back(&root,ft_atoi(*res));
