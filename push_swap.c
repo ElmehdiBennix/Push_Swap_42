@@ -6,17 +6,18 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 06:25:19 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/04 08:03:23 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-void exitmsg(int err)
+void failure(int err)
 {
     write(2,"Error\n",7);
     exit(err);
 }
+
 void parsing(char **av)
 {
     char *tmp;
@@ -27,7 +28,7 @@ void parsing(char **av)
         tmp = *av;
         allowed = 0;
         if (*tmp == '\0')
-            exitmsg(1);
+            failure(1);
         while (*tmp != '\0')
         {
             if (*tmp == ' ') 
@@ -38,10 +39,10 @@ void parsing(char **av)
                 tmp++;
             }
             else
-                exitmsg(2);
+                failure(2);
         }
         if (allowed == 0)
-            exitmsg(3);
+            failure(3);
         tmp = *av;
         while (*tmp != '\0')
         {
@@ -59,15 +60,15 @@ void parsing(char **av)
                 if (ft_isdigit(*tmp))
                 {
                     if (allowed > 0)
-                        exitmsg(4);
+                        failure(4);
                     tmp++;
                 }
                 else if (*tmp == '\0')
-                    exitmsg(5);
+                    failure(5);
                 else if (*tmp == ' ')
-                    exitmsg(6);
+                    failure(6);
                 else if (*tmp == '+' || *tmp == '-')
-                    exitmsg(7);
+                    failure(7);
             }
             else if (*tmp == '-')
             {
@@ -75,22 +76,22 @@ void parsing(char **av)
                 if (ft_isdigit(*tmp))
                 {
                     if (allowed > 0)
-                        exitmsg(8);
+                        failure(8);
                     tmp++;
                 }
                 else if (*tmp == '\0')
-                    exitmsg(9);
+                    failure(9);
                 else if (*tmp == ' ')
-                    exitmsg(10);
+                    failure(10);
                 else if (*tmp == '+' || *tmp == '-')
-                    exitmsg(11);
+                    failure(11);
             }
         }
         printf("passed\n");
     }
 }
 
-char *add_sign(char *p) //remove zeros  signzero
+char *sign_zero(char *p) //remove zeros  signzero
 {
     char *sign = NULL;
 
@@ -136,66 +137,76 @@ char *add_sign(char *p) //remove zeros  signzero
 char **joinning(int ac , char **av)
 {
     int i;
-    char *str1;
-    char **spl;
+    char *str;
     char **res;
+    char **save;
+    char **p;
 
     i = 1;
     while (*(++av) && ac > i)
     {
         if (i == 1)
-            str1 = ft_strdup(*av);
+            str = ft_strdup(*av);
         else
         {
-            str1 = ft_strjoin(str1 , " "); // adding 2 spaces to seperate incase ;)
-            str1 = ft_strjoin(str1 , *av); // tmp to free leaks hir
+            str = ft_strjoin(str , " "); // adding 2 spaces to seperate incase ;)
+            str = ft_strjoin(str , *av); // tmp to free leaks hir
         }
         i++;
     }
-    printf("\n%s\n\n",str1);
-    spl = ft_split(str1 , ' ');
-    res = spl;
-    while (*spl)
+    res = ft_split(str , ' ');
+
+    printf("\n");
+    save = res;
+    while (*res)
     {
-        *spl = add_sign(*spl);
-        spl++;
+        *res = sign_zero(*res);
+        printf("%s ",*res);
+        res++;
+        i++;
     }
+    printf("\n\n");
+    res = save;
+    while (*res)
+    {
+        p = res;
+        while(*(++p))
+            if (ft_strncmp(*res,*p,ft_strlen(*res)) == 0 && ft_strncmp(*res,*p,ft_strlen(*p)) == 0)
+                failure(1);
+        res++;
+        i++;
+    }
+    res = save;
     return (res);
 }
 
 int push_swap(int ac, char **av)
 {
-    // char **spl;
     char **res ;
-    char **p;
+
 
     parsing (av); // if it passed means arguments are valid
     res = joinning(ac, av); //joinning for the split
-    while (*res)
-    {
-        p = res;
-        while(*(++p))
-        {
-            if (ft_strncmp(*res,*p,ft_strlen(*res)) == 0 && ft_strncmp(*res,*p,ft_strlen(*p)) == 0)
-                exitmsg(1);
-        }
-        // if (ft_strncmp(*res,"+2147483647",12) == 0)
-        //         exitmsg(1);
-        // if (ft_strncmp(*res,"-2147483648",12) == 0)   // atoi then check for max min int in linked list loop
-        //         exitmsg(1);
-        res++;
-    }
+
     return (0);
 }
 
 int main (int ac, char **av)
 {
+    int err;
+    
     if (ac == 1)
-        exitmsg(1);
-    return(push_swap(ac,av));
-    // ++av
-    // printf("%s",++av);
+        failure(1);
+    err = push_swap(ac,av);
+    
+    return (err);
 }
 
+
+
 // split them atoi
-// check  int max and int min with
+// // atoi then check for max min int in linked list loop
+        // if (ft_strncmp(*res,"+2147483647",12) == 0)
+        //         exitmsg(1);
+        // if (ft_strncmp(*res,"-2147483648",12) == 0)   
+        //         exitmsg(1);
