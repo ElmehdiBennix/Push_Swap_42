@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 05:50:07 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/04 06:10:54 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,7 @@ char **joinning(int ac , char **av)
     int i;
     char *str1;
     char **spl;
+    char **res;
 
     i = 1;
     while (*(++av) && ac > i)
@@ -153,31 +154,36 @@ char **joinning(int ac , char **av)
     }
     printf("%s\n\n",str1);
     spl = ft_split(str1 , ' ');
+    res = spl;
     while (*spl)
     {
         *spl = add_sign(*spl);
         printf("%s\n", *spl);
         spl++;
     }
-    return (spl);
+    return (res);
 }
 
 void push_swap(int ac, char **av)
 {
     // char **spl;
     char **res ;
-    char *p;
+    char **p;
 
     parsing (av); // if it passed means arguments are valid
     res = joinning(ac, av); //joinning for the split
     while (*res)
     {
-        p = *res;
-        while(++p)
+        p = res;
+        while(*(++p))
         {
-            if (ft_strncmp(*res,p,ft_strlen(*res)) == 0)
+            if (ft_strncmp(*res,*p,ft_strlen(*p)) == 0)
                 exitmsg(1);
         }
+        // if (ft_strncmp(*res,"+2147483647",12) == 0)
+        //         exitmsg(1);
+        // if (ft_strncmp(*res,"-2147483648",12) == 0)
+        //         exitmsg(1);
         res++;
     }
 }
