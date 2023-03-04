@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 06:15:45 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/04 06:25:19 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ char **joinning(int ac , char **av)
     return (res);
 }
 
-void push_swap(int ac, char **av)
+int push_swap(int ac, char **av)
 {
     // char **spl;
     char **res ;
@@ -181,20 +181,21 @@ void push_swap(int ac, char **av)
         }
         // if (ft_strncmp(*res,"+2147483647",12) == 0)
         //         exitmsg(1);
-        // if (ft_strncmp(*res,"-2147483648",12) == 0)
+        // if (ft_strncmp(*res,"-2147483648",12) == 0)   // atoi then check for max min int in linked list loop
         //         exitmsg(1);
         res++;
     }
+    return (0);
 }
 
 int main (int ac, char **av)
 {
     if (ac == 1)
         exitmsg(1);
-    push_swap(ac,av);
+    return(push_swap(ac,av));
     // ++av
     // printf("%s",++av);
 }
 
 // split them atoi
-// check for dubs and int max and int min with strcmp after split
+// check  int max and int min with
