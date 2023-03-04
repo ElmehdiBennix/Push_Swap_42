@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 09:56:19 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/04 09:59:03 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,17 +154,12 @@ char **joinning(int ac , char **av)
         i++;
     }
     res = ft_split(str , ' ');
-
-    printf("\n");
     save = res;
     while (*res)
     {
         *res = sign_zero(*res);
-        printf("%s ",*res);
         res++;
-        i++;
     }
-    printf("\n\n");
     res = save;
     while (*res)
     {
@@ -173,7 +168,6 @@ char **joinning(int ac , char **av)
             if (ft_strncmp(*res,*p,ft_strlen(*res)) == 0 && ft_strncmp(*res,*p,ft_strlen(*p)) == 0)
                 failure(12);
         res++;
-        i++;
     }
     res = save;
     return (res);
@@ -207,3 +201,4 @@ int main (int ac, char **av)
     
     return (err);
 }
+
