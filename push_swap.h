@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 16:15:10 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/05 17:04:26 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef struct s_list
 void failure(int err);
 t_list *split_args(int ac , char **av);
 void check_valid(char **av); // check for valid arguments
+
+void sa(t_list **head);
+
 
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
