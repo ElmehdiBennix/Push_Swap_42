@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 05:09:22 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 09:22:27 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/05 10:34:48 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	ft_lstcreate_back(t_list **lst, void *content)
+void	ft_lstcreate_back(t_list **lst, int content)
 {
 	t_list	*back;
 

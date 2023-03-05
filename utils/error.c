@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 02:37:18 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 10:35:07 by ebennix          ###   ########.fr       */
+/*   Created: 2023/03/05 09:52:25 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/05 09:54:54 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+# include "../push_swap.h"
 
-t_list	*ft_lstnew(int content)
+void failure(int err)
 {
-	t_list	*node;
-
-	node = (t_list *)malloc(sizeof(t_list));
-	if (node == NULL)
-		return (NULL);
-	node -> content = content ;
-	node -> next = NULL ;
-	return (node);
+    write(2,"Error\n",7);
+    exit(err);
 }
