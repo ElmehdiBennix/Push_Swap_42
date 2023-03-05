@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstcreate_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 21:06:46 by ebennix           #+#    #+#             */
-/*   Updated: 2023/02/23 19:05:34 by ebennix          ###   ########.fr       */
+/*   Created: 2023/02/22 05:09:22 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/05 09:22:27 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstcreate_back(t_list **lst, void *content)
 {
-	t_list	*arrow;
+	t_list	*back;
 
-	if (*lst == NULL)
-		*lst = new;
-	else
-	{
-		arrow = ft_lstlast(*lst);
-		arrow -> next = new;
-	}
+	back = ft_lstnew(content);
+	ft_lstadd_back(lst, back);
 }

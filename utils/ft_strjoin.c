@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 22:10:41 by ebennix           #+#    #+#             */
-/*   Updated: 2022/11/07 21:52:51 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/25 19:52:57 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/05 09:22:11 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	i;
-	char	*dub;
+	char			*str;
+	size_t			len;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	dub = (char *)malloc((ft_strlen(s)+ 1) * sizeof(char));
-	if (!dub)
+	j = 0;
+	if (!s1 || !s2)
 		return (NULL);
-	while (s[i] != '\0')
+	len = ft_strlen(s1)+ft_strlen(s2) + 1;
+	str = (char *)malloc(len * sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s1[i] != '\0' && i < len)
 	{
-		dub[i] = s[i];
+		str[i] = s1[i];
 		i++;
 	}
-	dub[i] = '\0';
-	return (dub);
+	while (s2[j] != '\0' && i < len)
+			str[i++] = s2[j++];
+	str[i] = '\0';
+	return (str);
 }

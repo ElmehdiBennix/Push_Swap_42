@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstcreate_front.c                               :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 05:09:25 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 08:46:48 by ebennix          ###   ########.fr       */
+/*   Created: 2023/02/21 21:06:42 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/05 09:22:21 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_lstcreate_front(t_list **lst, void *content)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*front;
+	t_list	*arrow;
 
-	front = ft_lstnew(content);
-	ft_lstadd_front(lst, front);
+	arrow = lst;
+	if (arrow)
+		while (arrow ->next != NULL)
+			arrow = arrow -> next;
+	return (arrow);
 }

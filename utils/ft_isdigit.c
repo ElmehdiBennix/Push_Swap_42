@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstcreate_back.c                                :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 05:09:22 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 08:46:52 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/07 11:19:09 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/05 09:22:33 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-void	ft_lstcreate_back(t_list **lst, void *content)
+int	ft_isdigit(int c)
 {
-	t_list	*back;
-
-	back = ft_lstnew(content);
-	ft_lstadd_back(lst, back);
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

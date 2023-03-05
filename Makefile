@@ -9,7 +9,10 @@ CFLAGS := -g -Wall -Wextra
 
 HEADER := push_swap.h
 
-FILES := push_swap utils/ft_atoi \
+FILES := push_swap \
+		 utils/ft_atoi 	utils/ft_lstadd_back  utils/ft_lstadd_front  utils/ft_lstcreate_back	utils/ft_lstcreate_front	\
+		 utils/ft_lstlast	utils/ft_lstnew		utils/ft_lstsize	utils/ft_split	utils/ft_strdup utils/ft_strjoin \
+		 utils/ft_strlen	utils/ft_strncmp  utils/ft_isdigit\
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)
@@ -20,22 +23,17 @@ m := MakefileAutoPush
 
 all : $(EXE)
 
-$(EXE) : $(OBJ) $(LIB)
-	$(CC) $(OBJ) $(LIB) -o $(EXE)
+$(EXE) : $(OBJ)
+	$(CC) $(OBJ) -o $(EXE)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(LIB) :
-	cd ft_libft42 && $(MAKE)
-
 clean :
 	$(RM) $(OBJ)
-	cd ft_libft42 && $(RM) *.o
 
 fclean : clean
 	$(RM) $(EXE)
-	cd ft_libft42 && $(RM) *.a
 
 re : fclean all
 

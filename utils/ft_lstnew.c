@@ -6,11 +6,11 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 02:37:18 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/04 08:46:45 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/05 09:22:20 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
 t_list	*ft_lstnew(void *content)
 {
