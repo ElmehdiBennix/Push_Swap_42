@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 03:42:30 by ebennix           #+#    #+#             */
-/*   Updated: 2022/11/07 21:17:17 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/05 12:09:09 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	ft_memcmp(void *s1,void *s2, size_t n)
 {
 	size_t			i;
 	unsigned char	*p1;
@@ -27,3 +27,15 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 		i++;
 	return (p1[i] - p2[i]);
 }
+
+// int main(int ac, char **av)
+// {
+// 	(void)ac;
+// 	while(*(++av))
+// 	{
+// 		printf("%s\n",*av);
+// 	}
+// 	// int *d = (int *)15221;
+// 	// int *f = (int *)15222;
+// 	// printf("%d",ft_memcmp(&d,&f,1));
+// }
