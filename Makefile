@@ -11,10 +11,10 @@ CFLAGS := -g -Wall -Wextra
 HEADER := push_swap.h
 
 FILES := push_swap \
-		 parsing/sign_zero		parsing/split_args		parsing/valid_args \
+		parsing/split_args		parsing/valid_args \
 		 utils/ft_atoi 	utils/ft_lstadd_back  utils/ft_lstadd_front  utils/ft_lstcreate_back	utils/ft_lstcreate_front	\
 		 utils/ft_lstlast	utils/ft_lstnew		utils/ft_lstsize	utils/ft_split	utils/ft_strdup utils/ft_strjoin \
-		 utils/ft_strlen	utils/ft_strncmp  utils/ft_isdigit	utils/error		utils/ft_memcmp	\
+		 utils/ft_strlen  utils/ft_isdigit	utils/error	\
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)

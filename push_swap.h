@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 15:39:53 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/05 16:04:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,12 @@ typedef struct s_list
 }   t_list;
 
 void failure(int err);
-char *sign_zero(char *p);
 t_list *split_args(int ac , char **av);
 void check_valid(char **av); // check for valid arguments
 
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
 int     ft_atoi(char *str);
-int		ft_strncmp(char *s1, char *s2, size_t n);
-int	ft_memcmp(void *s1, void *s2, size_t n);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *str, char delim);

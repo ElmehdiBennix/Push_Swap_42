@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 11:58:30 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/05 16:13:03 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,5 @@ int main (int ac, char **av)
     if (ac == 1)
         failure(1);
     err = push_swap(ac,av);
-    
-    // while(1)
-    //     sleep(1);
-    
     return (err);
 }
