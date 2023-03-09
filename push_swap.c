@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/09 12:56:48 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/09 18:00:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int push_swap(int ac, char **av)
 {
-    t_list *a;
-    t_list *b;
+    t_list *stack_a;
+    t_list *stack_b;
 
     check_valid (av); // if it passed means arguments are valid
-    a = split_args(ac, av); //joinning for the split
-    b = NULL;
+    stack_a = split_args(ac, av); //joinning for the split
+    stack_b = NULL;
     
     
     return (0);
