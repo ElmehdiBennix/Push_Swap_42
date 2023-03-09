@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 17:04:26 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/09 12:10:20 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void failure(int err);
 t_list *split_args(int ac , char **av);
 void check_valid(char **av); // check for valid arguments
 
-void sa(t_list **head);
+void swap(t_list **stack);
+void swap_swap(t_list **stack_a, t_list **stack_b);
 
 
 int		ft_isdigit(int c);
