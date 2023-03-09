@@ -6,12 +6,17 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/09 18:00:51 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/09 18:06:48 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
+void under_five()
+{
+
+
+}
 int push_swap(int ac, char **av)
 {
     t_list *stack_a;
