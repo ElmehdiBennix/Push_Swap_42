@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/09 18:10:01 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/10 17:37:15 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@
 # include <limits.h>
 # include <fcntl.h>
 
-typedef struct s_list
+typedef struct node
 {
     int            content;
-    struct s_list   *next;
+    int            position;
+    struct node   *next;
 }   t_list;
 
 //parsing and error
@@ -33,12 +34,12 @@ t_list *split_args(int ac , char **av);
 void check_valid(char **av); // check for valid arguments
 
 //operation funcs
-void swap(t_list **stack);
+void swap(t_list **stack, char AorB);
 void ss(t_list **stack_a, t_list **stack_b);
-void push(t_list **stack_a, t_list **stack_b , char stack);
-void reverse_rotate(t_list **stack);
+void push(t_list **stack_a, t_list **stack_b, char AorB);
+void reverse_rotate(t_list **stack, char AorB);
 void rrr(t_list **stack_a, t_list **stack_b);
-void rotate(t_list **stack);
+void rotate(t_list **stack, char AorB);
 void rr(t_list **stack_a, t_list **stack_b);
 
 //libft funcs

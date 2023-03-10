@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:05 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/09 16:40:13 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/10 17:43:18 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../push_swap.h"
 
-void rotate(t_list **stack)
+void rotate(t_list **stack, char AorB)
 {
     t_list *tmp = *stack;
 
@@ -20,12 +20,20 @@ void rotate(t_list **stack)
     tmp -> next = NULL;
     
     ft_lstadd_back(stack,tmp);
+    if(AorB == 'a')
+        write(1,"ra\n",4);
+    else if (AorB == 'b')
+        write(1,"rb\n",4);
+    else
+        return;
 }
 
 void rr(t_list **stack_a, t_list **stack_b)
 {
-    rotate(stack_a);
-    rotate(stack_b);
+    rotate(stack_a,'r');
+    rotate(stack_b,'r');
+    write(1,"rr\n",4);
+
 }
 
 // int main ()

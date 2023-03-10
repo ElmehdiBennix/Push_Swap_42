@@ -11,9 +11,7 @@ CFLAGS := -g -Wall -Wextra
 HEADER := push_swap.h
 
 FILES := push_swap		parsing/split_args		parsing/valid_args \
-		 operations/Push_A.c	operations/Push_B.c	operations/Reverse_rotate_A.c	operations/Reverse_rotate_AndB.c \
-		 operations/Reverse_rotate_B.c	operations/Rotate_A.c	operations/Rotate_AndB.c	operations/Rotate_B.c	\
-		 operations/Swap_A.c	operations/Swap_AndB.c	operations/Swap_B.c \
+		 operations/Push	operations/Reverse_rotate		operations/Rotate	operations/Swap \
 		 utils/ft_atoi 	utils/ft_lstadd_back  utils/ft_lstadd_front  utils/ft_lstcreate_back	utils/ft_lstcreate_front	\
 		 utils/ft_lstlast	utils/ft_lstnew		utils/ft_lstsize	utils/ft_split	utils/ft_strdup utils/ft_strjoin \
 		 utils/ft_strlen  utils/ft_isdigit	utils/error	\

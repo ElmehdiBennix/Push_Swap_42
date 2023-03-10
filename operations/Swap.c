@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/09 17:59:53 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/10 17:43:05 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../push_swap.h"
 
-void swap(t_list **stack) 
+void swap(t_list **stack, char AorB) 
 {
     t_list *arrow;
     int i;
@@ -25,13 +25,21 @@ void swap(t_list **stack)
         i = arrow -> content;
         arrow -> content = arrow -> next -> content;
         arrow -> next -> content = i;
+        if(AorB == 'a')
+            write(1,"sa\n",4);
+        else if (AorB == 'b')
+            write(1,"sb\n",4);
+        else
+            return;
     }
 }
 
 void ss(t_list **stack_a, t_list **stack_b)
 {
-    swap(stack_a);
-    swap(stack_b);
+    swap(stack_a,'s');
+    swap(stack_b,'s');
+    write(1,"ss\n",4);
+
 }
 
 // int main ()

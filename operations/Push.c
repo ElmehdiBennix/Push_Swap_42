@@ -6,19 +6,19 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/09 14:53:39 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/10 17:43:39 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../push_swap.h"
 
-void push(t_list **stack_a, t_list **stack_b , char stack)
+void push(t_list **stack_a, t_list **stack_b, char AorB)
 {
     t_list *a = *stack_a;
     t_list *b = *stack_b;
     t_list *tmp;
 
-    if(stack == 'a')
+    if(AorB == 'a')
     {
         if(!b)
             return;
@@ -26,8 +26,9 @@ void push(t_list **stack_a, t_list **stack_b , char stack)
         b -> next = a;
         *stack_a = b;
         *stack_b = tmp;
+        write(1,"pa\n",4);
     }
-    else if(stack == 'b')
+    else if(AorB == 'b')
     {
         if(!a)
             return;
@@ -35,6 +36,7 @@ void push(t_list **stack_a, t_list **stack_b , char stack)
         a -> next = b;
         *stack_b = a;
         *stack_a = tmp;
+        write(1,"pb\n",4);
     }
 }
 

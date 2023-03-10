@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:41 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/09 17:59:46 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/10 17:43:49 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../push_swap.h"
 
-void reverse_rotate(t_list **stack)
+void reverse_rotate(t_list **stack, char AorB)
 {
     t_list *tmp = *stack;
     t_list *second_last = NULL;
@@ -24,12 +24,20 @@ void reverse_rotate(t_list **stack)
     }
     second_last -> next = NULL;
     ft_lstadd_front(stack,tmp);
+    if(AorB == 'a')
+        write(1,"rra\n",5);
+    else if (AorB == 'b')
+        write(1,"rrb\n",5);
+    else
+        return;
 }
 
 void rrr(t_list **stack_a, t_list **stack_b)
 {
-    reverse_rotate(stack_a);
-    reverse_rotate(stack_b);
+    reverse_rotate(stack_a,'r');
+    reverse_rotate(stack_b,'r');
+    write(1,"rrr\n",5);
+
 }
 
 // int main ()
