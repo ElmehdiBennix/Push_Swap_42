@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 16:13:39 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/11 16:12:22 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ t_list *split_args(int ac , char **av)
         ft_lstcreate_back(&root,ft_atoi(*res));
     while (arrow)
     {
-        p = arrow->next;
+        p = arrow -> next;
         while(p)
         {
-            if(arrow->content == p->content)
+            if(arrow -> content == p -> content)
                 failure(2);
-            p = p->next;
+            p = p -> next;
         }
         arrow = arrow->next;
     }

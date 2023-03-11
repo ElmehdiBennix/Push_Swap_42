@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/10 17:43:05 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/11 20:29:04 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void swap(t_list **stack, char AorB)
         i = arrow -> content;
         arrow -> content = arrow -> next -> content;
         arrow -> next -> content = i;
+        i = arrow -> position;
+        arrow -> position = arrow -> next -> position;   // need to implement a real swap for the node
+        arrow -> next -> position = i;
         if(AorB == 'a')
             write(1,"sa\n",4);
         else if (AorB == 'b')
