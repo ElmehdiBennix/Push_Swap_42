@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/10 17:37:15 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/12 21:45:33 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 typedef struct node
 {
     int            content;
+    int            index;
     int            position;
     struct node   *next;
 }   t_list;
