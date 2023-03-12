@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/13 00:23:14 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/13 00:35:30 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
             init_position(*stack_a);
         }
         else
+        {
             while ((*stack_a) -> position != 0)
                 reverse_rotate(stack_a,'a');
             push(stack_a,stack_b,'b');
@@ -97,9 +98,35 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
             sort_under_five(size - 1,stack_a,stack_b);
             push(stack_a,stack_b,'a');
             init_position(*stack_a);
+        }
     }
     else if (size == 5)
     {
+        t_list *tmp = *stack_a;
+        while(arrow -> position != 0)
+        {
+            while(tmp -> position != 1)
+                tmp = tmp -> next;
+            arrow = arrow -> next;
+        }
+        if (arrow -> index == 0 || arrow -> index == 1 || arrow -> index == 2)
+        {
+            if(arrow -> index == 1 || arrow -> index == 2)
+                rotate(stack_a,'a');
+            push(stack_a,stack_b,'b');
+        }
+        if (tmp -> index == 0 || tmp -> index == 1 || tmp -> index == 2)
+        {
+            if(tmp -> index == 1 || tmp -> index == 2)
+                rotate(stack_a,'a');
+            push(stack_a,stack_b,'b');
+        }
+        else
+        {
+            while ((*stack_a) -> position != 0)
+                reverse_rotate(stack_a,'a');
+        }
+
         // t_list *tmp = arrow;
         // while (tmp -> next != NULL)
         // {
