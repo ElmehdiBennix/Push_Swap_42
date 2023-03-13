@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/13 01:13:37 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/13 01:15:21 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,3 +178,16 @@ int main (int ac, char **av)
     err = push_swap(ac,av);
     return (err);
 }
+/*
+./push_swap -4 -45 45 57 0
+ra
+pb
+ra
+ra
+ra
+pb
+rra
+pa
+pa
+could be optimized
+*/
