@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/14 23:57:15 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/14 23:57:57 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,12 +211,15 @@ void sort_under_2hundred(int size, t_list **stack_a, t_list **stack_b, int divid
     }
 
     int lstlen;
+    lstlen = ft_lstsize(*stack_b) - 1;
     while (*stack_b)
     {
-        lstlen = ft_lstsize(*stack_b) - 1;
         init_index(*stack_b);
         if (get_index(*stack_b, lstlen) == 0)
+        {
             push(stack_a, stack_b, 'a');
+            lstlen--;
+        }
         else if(get_index(*stack_b,lstlen) <= lstlen  / 2)
             rotate(stack_b, 'b');
         else if(get_index(*stack_b,lstlen) >= lstlen / 2)
