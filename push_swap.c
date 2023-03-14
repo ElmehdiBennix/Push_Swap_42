@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/13 01:15:21 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/14 19:18:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,18 +140,78 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
     }
 }
 
+void sort(t_list **stack_a, t_list **stack_b , int chunk, int last_pos)
+{
+    int mid;
+    int i;
+
+    mid = chunk / 2;
+    i  = chunk;
+    // int x = 0;
+
+    while (*stack_a && i > 0)
+    {
+        if((*stack_a) -> position <= last_pos)
+        {
+            if((*stack_a) -> position <= last_pos - mid)
+                push(stack_a,stack_b,'b');
+            else 
+            {
+                push(stack_a,stack_b,'b');
+                rotate(stack_b,'b');
+            }
+            i--;
+        }
+        else
+        {
+            rotate(stack_a,'a');
+        }
+
+    }
+    // while (*stack_a && i > 0)
+    // {
+    //     if ((*stack_a)->position <= last_el)
+    //     {
+             
+    //     }
+    //     else
+    //         ra(*stack_a);
+    // }
+
+}
+
+void sort_under_2hundred(int size, t_list **stack_a, t_list **stack_b, int divide)
+{
+    int chunk = size / divide; // ./. 5 or ./. 10
+    int reset = chunk;
+
+    while (ft_lstsize(*stack_a))
+    {
+        sort(stack_a,stack_b,chunk ,reset);
+        reset += chunk;
+    }
+}
+
 int push_swap(int ac, char **av)
 {
     t_list *stack_a;
     t_list *stack_b;
-    int size = ac - 1;
+    int size;
 
     check_valid (av); // if it passed means arguments are valid
     stack_a = split_args(ac, av); //joinning for the split
     stack_b = NULL;
-    init_position(stack_a);
-    sort_under_five(size,&stack_a,&stack_b);
 
+    size = ft_lstsize(stack_a);
+    init_position(stack_a);
+
+    if (size <= 5)
+        sort_under_five(size,&stack_a,&stack_b);
+    else if (size <= 200)
+        sort_under_2hundred(size,&stack_a,&stack_b,5);
+    // else // split into 10
+
+    
     printf("\n");
     while(stack_a)
     {
