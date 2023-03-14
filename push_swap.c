@@ -6,20 +6,30 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/14 19:18:50 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/14 23:00:54 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
 
-void init_position(t_list *stack)
+void init_index(t_list *stack)
 {
     t_list *arrow = stack;
-	t_list	*p;
+
     int i = 0;
     while (arrow)
     {
         arrow -> index = i++;
+        arrow = arrow -> next;
+    }
+}
+
+void init_position(t_list *stack)
+{
+    t_list *arrow = stack;
+	t_list	*p;
+    while (arrow)
+    {
         arrow -> position = 0;
         arrow = arrow -> next;
     }    
@@ -140,16 +150,12 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
     }
 }
 
-void sort(t_list **stack_a, t_list **stack_b , int chunk, int last_pos)
+void push_to_b(t_list **stack_a, t_list **stack_b , int chunk, int last_pos)
 {
     int mid;
-    int i;
 
     mid = chunk / 2;
-    i  = chunk;
-    // int x = 0;
-
-    while (*stack_a && i > 0)
+    while (*stack_a && chunk > 0)
     {
         if((*stack_a) -> position <= last_pos)
         {
@@ -160,24 +166,20 @@ void sort(t_list **stack_a, t_list **stack_b , int chunk, int last_pos)
                 push(stack_a,stack_b,'b');
                 rotate(stack_b,'b');
             }
-            i--;
+            chunk--;
         }
         else
-        {
             rotate(stack_a,'a');
-        }
-
+        // need to hit the 300 scope in opitmization 
     }
-    // while (*stack_a && i > 0)
-    // {
-    //     if ((*stack_a)->position <= last_el)
-    //     {
-             
-    //     }
-    //     else
-    //         ra(*stack_a);
-    // }
-
+}
+int get_index(t_list *stack, int position)
+{
+    t_list *arrow = stack;
+    while (arrow -> next != NULL && arrow -> position != position)
+        arrow = arrow -> next;
+    int index = arrow -> index;
+    return (index);
 }
 
 void sort_under_2hundred(int size, t_list **stack_a, t_list **stack_b, int divide)
@@ -187,8 +189,23 @@ void sort_under_2hundred(int size, t_list **stack_a, t_list **stack_b, int divid
 
     while (ft_lstsize(*stack_a))
     {
-        sort(stack_a,stack_b,chunk ,reset);
+        push_to_b(stack_a,stack_b,chunk ,reset);
         reset += chunk;
+    }
+
+    init_index(*stack_b);
+    int lstlen = ft_lstsize(*stack_b) - 1;
+    while (*stack_b)
+    {
+        if ((*stack_b) -> position == lstlen)
+        {
+            push(stack_a, stack_b, 'a');
+            lstlen--;
+        }
+        else if(get_index(*stack_b,lstlen) <= lstlen / 2)
+            rotate(stack_b, 'b');
+        else if(get_index(*stack_b,lstlen) >= lstlen / 2)
+            reverse_rotate(stack_b, 'b');
     }
 }
 
@@ -204,27 +221,29 @@ int push_swap(int ac, char **av)
 
     size = ft_lstsize(stack_a);
     init_position(stack_a);
+    init_index(stack_a);
+
 
     if (size <= 5)
         sort_under_five(size,&stack_a,&stack_b);
     else if (size <= 200)
         sort_under_2hundred(size,&stack_a,&stack_b,5);
-    // else // split into 10
-
+    else
+        sort_under_2hundred(size,&stack_a,&stack_b,10);
     
-    printf("\n");
-    while(stack_a)
-    {
-        printf("|| stack : a = %d      with the position %d\n",stack_a -> content,stack_a -> position);
-        stack_a = stack_a -> next;
-    }
+    // printf("\n");
+    // while(stack_a)
+    // {
+    //     printf("|| stack : a = %d      with the position %d            with the index %d\n",stack_a -> content,stack_a -> position,stack_a -> index);
+    //     stack_a = stack_a -> next;
+    // }
 
-    printf("\n");
-    while(stack_b)
-    {
-        printf("|| stack : b = %d      with the position %d\n",stack_b -> content,stack_b -> position);
-        stack_b = stack_b -> next;
-    }
+    // printf("\n");
+    // while(stack_b)
+    // {
+    //     printf("|| stack : b = %d      with the position %d            with the index %d\n",stack_b -> content,stack_b -> position,stack_b -> index);
+    //     stack_b = stack_b -> next;
+    // }
 
     return (0);
 }
@@ -251,3 +270,6 @@ pa
 pa
 could be optimized
 */
+
+
+// leaks still

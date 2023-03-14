@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:41 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/14 19:15:18 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/14 22:56:03 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void reverse_rotate(t_list **stack, char AorB)
 
     //     bus error in ➜  push_swap42 git:(main) ✗ ./push_swap -4 -45 45 554 -95 in sort under 5 eleemts
 
-    if (arrow)
-        return ;
+    // if (arrow)
+    //     return ;
     while (arrow -> next != NULL) 
     {
         second_last = arrow;

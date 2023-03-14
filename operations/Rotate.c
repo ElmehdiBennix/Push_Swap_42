@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:05 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/12 21:35:22 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/14 19:28:01 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void rotate(t_list **stack, char AorB)
     *stack = (*stack) -> next;
     tmp -> next = NULL;
     
-    ft_lstadd_back(&(*stack),tmp);
+    ft_lstadd_back(stack, tmp);
     if(AorB == 'a')
         write(1,"ra\n",4);
     else if (AorB == 'b')
