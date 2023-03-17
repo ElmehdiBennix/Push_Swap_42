@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/12 23:14:08 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/17 03:26:14 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void ss(t_list **stack_a, t_list **stack_b)
     swap(stack_a,'s');
     swap(stack_b,'s');
     write(1,"ss\n",4);
-
 }
 
 // int main ()

@@ -6,23 +6,11 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/17 02:47:20 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/17 02:59:19 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "push_swap.h"
-
-void init_index(t_list *stack)
-{
-    t_list *arrow = stack;
-
-    int i = 0;
-    while (arrow)
-    {
-        arrow -> index = i++;
-        arrow = arrow -> next;
-    }
-}
 
 void init_position(t_list *stack)
 {
@@ -31,7 +19,7 @@ void init_position(t_list *stack)
     while (arrow)
     {
         arrow -> position = 0;
-        arrow = arrow -> next;
+        arrow = arrow -> next; // could get it inside the while loop
     }    
 
 	arrow = stack;
@@ -54,6 +42,18 @@ void init_position(t_list *stack)
     //     printf(" position -> %d\n",arrow ->position);
     //     arrow = arrow ->next;
     // } 
+}
+
+void init_index(t_list *stack)
+{
+    t_list *arrow = stack;
+
+    int i = 0;
+    while (arrow)
+    {
+        arrow -> index = i++;
+        arrow = arrow -> next;
+    }
 }
 
 int get_index(t_list *stack, int position)
@@ -136,7 +136,6 @@ int get_index(t_list *stack, int position)
 void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
 {
     t_list *arrow = *stack_a;
-    (void) *stack_b;
     
     if (size == 1)
         return;
@@ -312,10 +311,10 @@ int push_swap(int ac, char **av)
     if (size <= 5)
         sort_under_five(size,&stack_a,&stack_b);
     else if (size <= 200)
-        sort_chunks(size,&stack_a,&stack_b,5);
+        sort_chunks(size, &stack_a, &stack_b, 5);
     else
-        sort_chunks(size,&stack_a,&stack_b,10);
-    
+        sort_chunks(size, &stack_a, &stack_b, 10);
+
     // printf("\n");
     // while(stack_a)
     // {
@@ -341,6 +340,9 @@ int main (int ac, char **av)
     err = push_swap(ac,av);
     return (err);
 }
+
+// check if sorted function (if_sorted) 
+
 /*
 ./push_swap -4 -45 45 57 0
 ra
@@ -354,6 +356,5 @@ pa
 pa
 could be optimized
 */
-
 
 // leaks still
