@@ -3,53 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   Swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 17:33:33 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:16:15 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
+#include "../push_swap.h"
 
-static int stack_swap(t_list **stack) 
+static int	stack_swap(t_list **stack)
 {
-    t_list *arrow;
-    int i;
+	t_list	*arrow;
+	int		i;
 
-    arrow = *stack;
-    if (!arrow || !arrow -> next)
-        return (1);
-    i = arrow -> content;
-    arrow -> content = arrow -> next -> content;
-    arrow -> next -> content = i;
-    i = arrow -> position;
-    arrow -> position = arrow -> next -> position;
-    arrow -> next -> position = i;
-    return (0);
+	arrow = *stack;
+	if (!arrow || !arrow->next)
+		return (1);
+	i = arrow->content;
+	arrow->content = arrow->next->content;
+	arrow->next->content = i;
+	i = arrow->position;
+	arrow->position = arrow->next->position;
+	arrow->next->position = i;
+	return (0);
 }
 
-void swap(t_list **stack_a, t_list **stack_b, char operation)
+void	swap(t_list **stack_a, t_list **stack_b, char operation)
 {
-    unsigned int err[2];
+	unsigned int	err[2];
 
-    if (operation == 'a')
-    {
-        if (stack_swap(stack_a) == 0)
-            write(1,"sa\n",4);
-    }
-    else if (operation == 'b')
-    {
-        if (stack_swap(stack_b) == 0)
-            write(1,"sb\n",4);
-    }
-    else if (operation == 's')
-    {
-        err[0] = stack_swap(stack_a);
-        err[1] = stack_swap(stack_b);
-        if (err[0] == 0 || err[1] == 0)
-            write(1,"ss\n",4);
-    }
+	if (operation == 'a')
+	{
+		if (stack_swap(stack_a) == 0)
+			write(1, "sa\n", 4);
+	}
+	else if (operation == 'b')
+	{
+		if (stack_swap(stack_b) == 0)
+			write(1, "sb\n", 4);
+	}
+	else if (operation == 's')
+	{
+		err[0] = stack_swap(stack_a);
+		err[1] = stack_swap(stack_b);
+		if (err[0] == 0 || err[1] == 0)
+			write(1, "ss\n", 4);
+	}
 }
 
 // int main ()

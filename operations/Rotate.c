@@ -3,48 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   Rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:05 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 17:32:57 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:16:05 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
+#include "../push_swap.h"
 
-static int rotate_stack(t_list **stack)
+static int	rotate_stack(t_list **stack)
 {
-    t_list *arrow = *stack;
+	t_list	*arrow;
 
-    if (!arrow || !arrow -> next)
-        return (1);
-    *stack = (*stack) -> next;
-    arrow -> next = NULL;
-    ft_lstadd_back(stack, arrow);
-    return (0);
+	arrow = *stack;
+	if (!arrow || !arrow->next)
+		return (1);
+	*stack = (*stack)->next;
+	arrow->next = NULL;
+	ft_lstadd_back(stack, arrow);
+	return (0);
 }
 
-void rotate(t_list **stack_a, t_list **stack_b, char operation)
+void	rotate(t_list **stack_a, t_list **stack_b, char operation)
 {
-    unsigned int err[2];
+	unsigned int	err[2];
 
-    if (operation == 'a')
-    {
-        if (rotate_stack(stack_a) == 0)
-            write(1,"ra\n",4);
-    }
-    else if (operation == 'b')
-    {
-        if (rotate_stack(stack_b) == 0)
-            write(1,"rb\n",4);
-    }
-    else if (operation == 'r')
-    {
-        err[0] = rotate_stack(stack_a);
-        err[1] = rotate_stack(stack_b);
-        if (err[0] == 0 || err[1] == 0)
-            write(1,"rr\n",4);
-    }
+	if (operation == 'a')
+	{
+		if (rotate_stack(stack_a) == 0)
+			write(1, "ra\n", 4);
+	}
+	else if (operation == 'b')
+	{
+		if (rotate_stack(stack_b) == 0)
+			write(1, "rb\n", 4);
+	}
+	else if (operation == 'r')
+	{
+		err[0] = rotate_stack(stack_a);
+		err[1] = rotate_stack(stack_b);
+		if (err[0] == 0 || err[1] == 0)
+			write(1, "rr\n", 4);
+	}
 }
 
 // int main ()

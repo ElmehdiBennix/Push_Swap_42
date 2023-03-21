@@ -3,53 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   Reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:41 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 17:31:52 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:15:53 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
+#include "../push_swap.h"
 
-static int reverse_rotate_stack(t_list **stack)
+static int	reverse_rotate_stack(t_list **stack)
 {
-    t_list *arrow = *stack;
-    t_list *second_last = NULL;
+	t_list	*arrow;
+	t_list	*second_last;
 
-    if (!arrow || !arrow -> next)
-        return (1);
-    while (arrow -> next)
-    {
-        second_last = arrow;
-        arrow = arrow -> next;
-    }
-    second_last -> next = NULL;
-    ft_lstadd_front(stack,arrow);
-    return 0;
+	arrow = *stack;
+	second_last = NULL;
+	if (!arrow || !arrow->next)
+		return (1);
+	while (arrow->next)
+	{
+		second_last = arrow;
+		arrow = arrow->next;
+	}
+	second_last->next = NULL;
+	ft_lstadd_front(stack, arrow);
+	return (0);
 }
 
-void reverse_rotate(t_list **stack_a, t_list **stack_b, char operation)
+void	reverse_rotate(t_list **stack_a, t_list **stack_b, char operation)
 {
-    unsigned int err[2];
+	unsigned int	err[2];
 
-    if (operation == 'a')
-    {
-        if (reverse_rotate_stack(stack_a) == 0)
-            write(1,"rra\n",5);
-    }
-    else if (operation == 'b')
-    {
-        if (reverse_rotate_stack(stack_b) == 0)
-            write(1,"rrb\n",5);
-    }
-    else if (operation == 'r')
-    {
-        err[0] = reverse_rotate_stack(stack_a);
-        err[1] = reverse_rotate_stack(stack_b);
-        if (err[0] == 0 || err[1] == 0)
-            write(1,"rrr\n",5);    
-    }
+	if (operation == 'a')
+	{
+		if (reverse_rotate_stack(stack_a) == 0)
+			write(1, "rra\n", 5);
+	}
+	else if (operation == 'b')
+	{
+		if (reverse_rotate_stack(stack_b) == 0)
+			write(1, "rrb\n", 5);
+	}
+	else if (operation == 'r')
+	{
+		err[0] = reverse_rotate_stack(stack_a);
+		err[1] = reverse_rotate_stack(stack_b);
+		if (err[0] == 0 || err[1] == 0)
+			write(1, "rrr\n", 5);
+	}
 }
 
 // int main ()

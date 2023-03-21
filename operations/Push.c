@@ -3,41 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   Push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 16:46:36 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:15:47 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
+#include "../push_swap.h"
 
-void push(t_list **stack_a, t_list **stack_b, char operation)
+void	push(t_list **stack_a, t_list **stack_b, char operation)
 {
-    t_list *a = *stack_a;
-    t_list *b = *stack_b;
-    t_list *tmp;
+	t_list	*a;
+	t_list	*b;
+	t_list	*tmp;
 
-    if(operation == 'a')
-    {
-        if(!b)
-            return;
-        tmp = b -> next;
-        b -> next = a;
-        *stack_a = b;
-        *stack_b = tmp;
-        write(1,"pa\n",4);
-    }
-    else if(operation == 'b')
-    {
-        if(!a)
-            return;
-        tmp = a -> next;
-        a -> next = b;
-        *stack_b = a;
-        *stack_a = tmp;
-        write(1,"pb\n",4);
-    }
+	a = *stack_a;
+	b = *stack_b;
+	if (operation == 'a')
+	{
+		if (!b)
+			return ;
+		tmp = b->next;
+		b->next = a;
+		*stack_a = b;
+		*stack_b = tmp;
+		write(1, "pa\n", 4);
+	}
+	else if (operation == 'b')
+	{
+		if (!a)
+			return ;
+		tmp = a->next;
+		a->next = b;
+		*stack_b = a;
+		*stack_a = tmp;
+		write(1, "pb\n", 4);
+	}
 }
 
 // int main ()

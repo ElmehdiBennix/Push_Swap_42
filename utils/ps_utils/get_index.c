@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_index.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:19:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 18:23:25 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 19:16:32 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../push_swap.h"
+#include "../../push_swap.h"
 
-int get_index(t_list *stack, int position)
+int	get_index(t_list *stack, int position)
 {
-    t_list *arrow = stack;
-    while (arrow -> next != NULL && arrow -> position != position)
-        arrow = arrow -> next;
-    int index = arrow -> index;
-    return (index);
+	t_list *arrow = stack;
+	while (arrow->next != NULL && arrow->position != position)
+		arrow = arrow->next;
+	int index = arrow->index;
+	return (index);
 }
