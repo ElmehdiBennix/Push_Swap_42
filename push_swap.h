@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 23:01:52 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 23:24:34 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct node
 
 //parsing and error
 void	check_valid(char **av); // check for valid arguments
-t_list	*get_node(int ac, char **av);
+t_list			*get_node(int ac, char **av);
 
 //operation funcs
 void			swap(t_list **stack_a, t_list **stack_b, char operation);
@@ -43,9 +43,7 @@ void			failure(int err);
 void			init_index(t_list *stack);
 void			init_position(t_list *stack);
 int				get_index(t_list *stack, int position);
-void	sort_under_five(int size, t_list **stack_a, t_list **stack_b);
-
-//under five
+void			sort_under_five(int size, t_list **stack_a, t_list **stack_b);
 
 //libft funcs
 int				ft_isdigit(int c);

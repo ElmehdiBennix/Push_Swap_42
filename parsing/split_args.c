@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   split_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 21:35:26 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 23:24:07 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static  char	**split_args(int ac, char **av)
+static char	**split_args(int ac, char **av)
 {
-	int i;
-	char *str;
-	char **res;
-	char *tmp;
+	int		i;
+	char	*str;
+	char	**res;
+	char	*tmp;
 
 	i = 1;
 	while (*(++av) && ac > i)
@@ -34,23 +34,23 @@ static  char	**split_args(int ac, char **av)
 		i++;
 	}
 	res = ft_split(str, ' ');
-    if (!res)
-        free(res);
+	if (!res)
+		free(res);
 	free(str);
 	return (res);
 }
 
-t_list *get_node(int ac, char **av)
+t_list	*get_node(int ac, char **av)
 {
-    t_list *p;
-    t_list *root;
-    t_list *arrow;
-    char **res;
+	t_list *p;
+	t_list *root;
+	t_list *arrow;
+	char **res;
 
-    res = split_args(ac, av);
-    if (res == NULL)
-        exit(10);
-    root = ft_lstnew(ft_atoi(*res));
+	res = split_args(ac, av);
+	if (res == NULL)
+		exit(10);
+	root = ft_lstnew(ft_atoi(*res));
 	arrow = root;
 	while (*(++res))
 		ft_lstcreate_back(&root, ft_atoi(*res));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:52 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 21:43:14 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 23:24:03 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_valid(char **av)
 			}
 			else if (*tmp == '*')
 				failure(2);
-			else 
+			else
 				failure(2);
 		}
 		if (allowed == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:18:30 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 21:07:28 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 23:22:05 by bennix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_position(t_list *stack)
 	t_list *arrow;
 	t_list *p;
 
-    arrow = stack;
+	arrow = stack;
 	while (arrow)
 	{
 		arrow->position = 0;
