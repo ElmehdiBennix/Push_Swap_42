@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 16:34:28 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 18:20:33 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void swap(t_list **stack_a, t_list **stack_b, char operation);
 void push(t_list **stack_a, t_list **stack_b, char stack);
 void reverse_rotate(t_list **stack_a, t_list **stack_b, char operation);
 void rotate(t_list **stack_a, t_list **stack_b, char operation);
+
+//push_swap utils
+void init_index(t_list *stack);
+void init_position(t_list *stack);
+int get_index(t_list *stack, int position);
 
 //libft funcs
 int		ft_isdigit(int c);

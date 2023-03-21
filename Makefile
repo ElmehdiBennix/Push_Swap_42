@@ -14,7 +14,7 @@ FILES := push_swap		parsing/split_args		parsing/valid_args \
 		 operations/Push	operations/Reverse_rotate		operations/Rotate	operations/Swap \
 		 utils/ft_atoi 	utils/ft_lstadd_back  utils/ft_lstadd_front  utils/ft_lstcreate_back	utils/ft_lstcreate_front	\
 		 utils/ft_lstlast	utils/ft_lstnew		utils/ft_lstsize	utils/ft_split	utils/ft_strdup utils/ft_strjoin \
-		 utils/ft_strlen  utils/ft_isdigit	utils/error	\
+		 utils/ft_strlen  utils/ft_isdigit	utils/ps_utils/error		utils/ps_utils/init		utils/ps_utils/get_index	\
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)
