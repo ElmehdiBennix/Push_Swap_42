@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   valid_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:52 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 19:16:23 by bennix           ###   ########.fr       */
+/*   Updated: 2023/03/21 20:55:57 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	check_valid(char **av) // check for valid arguments
+void	check_valid(char **av)
 {
 	char *tmp;
 	unsigned int allowed;
@@ -48,7 +48,7 @@ void	check_valid(char **av) // check for valid arguments
 				allowed++;
 				tmp++;
 			}
-			if (*tmp == '+')
+			if (*tmp == '+' || *tmp == '-')
 			{
 				tmp++;
 				if (ft_isdigit(*tmp))
@@ -63,22 +63,6 @@ void	check_valid(char **av) // check for valid arguments
 					failure(6);
 				else if (*tmp == '+' || *tmp == '-')
 					failure(7);
-			}
-			else if (*tmp == '-')
-			{
-				tmp++;
-				if (ft_isdigit(*tmp))
-				{
-					if (allowed > 0)
-						failure(8);
-					tmp++;
-				}
-				else if (*tmp == '\0')
-					failure(9);
-				else if (*tmp == ' ')
-					failure(10);
-				else if (*tmp == '+' || *tmp == '-')
-					failure(11);
 			}
 		}
 	}

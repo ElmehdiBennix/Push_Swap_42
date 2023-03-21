@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 19:15:47 by bennix           ###   ########.fr       */
+/*   Updated: 2023/03/21 20:47:41 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,25 @@
 
 void	push(t_list **stack_a, t_list **stack_b, char operation)
 {
-	t_list	*a;
-	t_list	*b;
 	t_list	*tmp;
 
-	a = *stack_a;
-	b = *stack_b;
 	if (operation == 'a')
 	{
-		if (!b)
+		if (!(*stack_b))
 			return ;
-		tmp = b->next;
-		b->next = a;
-		*stack_a = b;
+		tmp = (*stack_b)-> next;
+		(*stack_b)-> next = *stack_a;
+		*stack_a = *stack_b;
 		*stack_b = tmp;
 		write(1, "pa\n", 4);
 	}
 	else if (operation == 'b')
 	{
-		if (!a)
+		if (!(*stack_a))
 			return ;
-		tmp = a->next;
-		a->next = b;
-		*stack_b = a;
+		tmp = (*stack_a)-> next;
+		(*stack_a)-> next = *stack_b;
+		*stack_b = *stack_a;
 		*stack_a = tmp;
 		write(1, "pb\n", 4);
 	}
