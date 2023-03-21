@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 20:46:36 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:08:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,6 @@ void	push_to_b(t_list **stack_a, t_list **stack_b, int chunk, int last_pos)
 		}
 		else
 			rotate(stack_a, stack_b, 'a');
-		// need to hit the 300 scope in opitmization
 	}
 }
 
@@ -194,18 +193,18 @@ int	push_swap(int ac, char **av)
 		sort_chunks(size, &stack_a, &stack_b, 5);
 	else
 		sort_chunks(size, &stack_a, &stack_b, 10);
-	printf("\n");
-	while(stack_a)
-	{
-	    printf("|| stack : a = %d      with the position %d            with the index %d\n",stack_a -> content,stack_a-> position,stack_a -> index);
-	    stack_a = stack_a -> next;
-	}
-	printf("\n");
-	while(stack_b)
-	{
-	    printf("|| stack : b = %d      with the position %d            with the index %d\n",stack_b -> content,stack_b -> position,stack_b -> index);
-	    stack_b = stack_b -> next;
-	}
+	// printf("\n");
+	// while(stack_a)
+	// {
+	//     printf("|| stack : a = %d      with the position %d            with the index %d\n",stack_a -> content,stack_a-> position,stack_a -> index);
+	//     stack_a = stack_a -> next;
+	// }
+	// printf("\n");
+	// while(stack_b)
+	// {
+	//     printf("|| stack : b = %d      with the position %d            with the index %d\n",stack_b -> content,stack_b -> position,stack_b -> index);
+	//     stack_b = stack_b -> next;
+	// }
 	return (0);
 }
 

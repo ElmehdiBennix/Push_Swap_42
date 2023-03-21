@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:52 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 20:55:57 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:13:08 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	check_valid(char **av)
 				allowed++;
 				tmp++;
 			}
-			else
+			else if (*tmp == '*')
+				failure(2);
+			else 
 				failure(2);
 		}
 		if (allowed == 0)
