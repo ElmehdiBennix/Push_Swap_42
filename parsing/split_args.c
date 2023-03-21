@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   split_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 19:16:19 by bennix           ###   ########.fr       */
+/*   Updated: 2023/03/21 21:35:26 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-t_list	*split_args(int ac, char **av)
+static  char	**split_args(int ac, char **av)
 {
 	int i;
 	char *str;
 	char **res;
-	t_list *p;
 	char *tmp;
 
 	i = 1;
@@ -27,17 +26,32 @@ t_list	*split_args(int ac, char **av)
 			str = ft_strdup(*av);
 		else
 		{
-			tmp = ft_strjoin(str, " "); // adding 2 spaces to seperate incase ;)
+			tmp = ft_strjoin(str, " ");
 			free(str);
-			str = ft_strjoin(tmp, *av); // tmp to free leaks hir
+			str = ft_strjoin(tmp, *av);
 			free(tmp);
 		}
 		i++;
 	}
 	res = ft_split(str, ' ');
-	free(str); // if incase failed double free
-	t_list *root = ft_lstnew(ft_atoi(*res));
-	t_list *arrow = root;
+    if (!res)
+        free(res);
+	free(str);
+	return (res);
+}
+
+t_list *get_node(int ac, char **av)
+{
+    t_list *p;
+    t_list *root;
+    t_list *arrow;
+    char **res;
+
+    res = split_args(ac, av);
+    if (res == NULL)
+        exit(10);
+    root = ft_lstnew(ft_atoi(*res));
+	arrow = root;
 	while (*(++res))
 		ft_lstcreate_back(&root, ft_atoi(*res));
 	while (arrow)

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 21:06:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 17:14:27 by ebennix          ###   ########.fr       */
+/*   Created: 2022/11/10 02:37:18 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/21 21:36:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-t_list	*ft_lstlast(t_list *lst)
+t_list	*ft_lstnew(int content)
 {
-	t_list	*arrow;
+	t_list	*node;
 
-	arrow = lst;
-	if (arrow)
-		while (arrow -> next != NULL)
-			arrow = arrow -> next;
-	return (arrow);
+	node = (t_list *)malloc(sizeof(t_list));
+	if (node == NULL)
+		return (NULL);
+	node -> content = content ;
+	node -> next = NULL ;
+	return (node);
 }

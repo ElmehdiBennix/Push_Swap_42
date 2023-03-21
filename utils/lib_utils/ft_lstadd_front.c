@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 11:19:09 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 09:22:33 by ebennix          ###   ########.fr       */
+/*   Created: 2022/11/10 23:21:57 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/21 21:36:40 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-int	ft_isdigit(int c)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	return (0);
+	new -> next = *lst;
+	*lst = new;
 }

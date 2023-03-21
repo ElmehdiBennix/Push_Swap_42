@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 21:06:46 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 09:22:31 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/22 22:10:41 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/21 21:36:59 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+char	*ft_strdup(const char *s)
 {
-	t_list	*arrow;
+	size_t	i;
+	char	*dub;
 
-	if (*lst == NULL)
-		*lst = new;
-	else
+	i = 0;
+	dub = (char *)malloc((ft_strlen(s)+ 1) * sizeof(char));
+	if (!dub)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		arrow = ft_lstlast(*lst);
-		arrow -> next = new;
+		dub[i] = s[i];
+		i++;
 	}
+	dub[i] = '\0';
+	return (dub);
 }

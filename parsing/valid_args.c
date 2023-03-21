@@ -6,11 +6,28 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:52 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 21:13:08 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:43:14 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+// static void sign(char *tmp, unsigned int allowed)
+// {
+// 	tmp++;
+// 	if (ft_isdigit(*tmp))
+// 	{
+// 		if (allowed > 0)
+// 			failure(4);
+// 		tmp++;
+// 	}
+// 	else if (*tmp == '\0')
+// 		failure(5);
+// 	else if (*tmp == ' ')
+// 		failure(6);
+// 	else if (*tmp == '+' || *tmp == '-')
+// 		failure(7);
+// }
 
 void	check_valid(char **av)
 {
@@ -52,6 +69,7 @@ void	check_valid(char **av)
 			}
 			if (*tmp == '+' || *tmp == '-')
 			{
+				// sign(tmp, allowed);
 				tmp++;
 				if (ft_isdigit(*tmp))
 				{

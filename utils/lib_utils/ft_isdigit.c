@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 04:50:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 09:22:18 by ebennix          ###   ########.fr       */
+/*   Created: 2022/10/07 11:19:09 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/21 21:36:36 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_isdigit(int c)
 {
-	int	i;
-
-	i = 0;
-	while (lst)
-	{
-		lst = lst -> next;
-		i++;
-	}
-	return (i);
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
 }

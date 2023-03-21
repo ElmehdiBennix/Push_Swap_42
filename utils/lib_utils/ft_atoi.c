@@ -6,11 +6,11 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 05:07:00 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 15:59:02 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 21:36:33 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
 static int	skip(const char *str, int i)
 {

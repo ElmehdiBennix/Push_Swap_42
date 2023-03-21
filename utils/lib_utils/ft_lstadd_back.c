@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 11:50:40 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 09:22:09 by ebennix          ###   ########.fr       */
+/*   Created: 2023/02/21 21:06:46 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/21 21:36:38 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-size_t	ft_strlen(const char *s)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
+	t_list	*arrow;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (*lst == NULL)
+		*lst = new;
+	else
+	{
+		arrow = ft_lstlast(*lst);
+		arrow -> next = new;
+	}
 }

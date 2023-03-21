@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bennix <bennix@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 19:17:03 by bennix           ###   ########.fr       */
+/*   Updated: 2023/03/21 23:01:52 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,8 @@ typedef struct node
 }				t_list;
 
 //parsing and error
-void			failure(int err);
-t_list			*split_args(int ac, char **av);
 void	check_valid(char **av); // check for valid arguments
+t_list	*get_node(int ac, char **av);
 
 //operation funcs
 void			swap(t_list **stack_a, t_list **stack_b, char operation);
@@ -40,9 +39,13 @@ void			reverse_rotate(t_list **stack_a, t_list **stack_b, char operation);
 void			rotate(t_list **stack_a, t_list **stack_b, char operation);
 
 //push_swap utils
+void			failure(int err);
 void			init_index(t_list *stack);
 void			init_position(t_list *stack);
 int				get_index(t_list *stack, int position);
+void	sort_under_five(int size, t_list **stack_a, t_list **stack_b);
+
+//under five
 
 //libft funcs
 int				ft_isdigit(int c);

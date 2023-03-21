@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstcreate_front.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 22:10:41 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 09:22:13 by ebennix          ###   ########.fr       */
+/*   Created: 2023/02/22 05:09:25 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/21 21:36:45 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
 
-char	*ft_strdup(const char *s)
+void	ft_lstcreate_front(t_list **lst, int content)
 {
-	size_t	i;
-	char	*dub;
+	t_list	*front;
 
-	i = 0;
-	dub = (char *)malloc((ft_strlen(s)+ 1) * sizeof(char));
-	if (!dub)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		dub[i] = s[i];
-		i++;
-	}
-	dub[i] = '\0';
-	return (dub);
+	front = ft_lstnew(content);
+	ft_lstadd_front(lst, front);
 }
