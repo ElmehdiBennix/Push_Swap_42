@@ -6,42 +6,50 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/17 03:26:14 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 17:33:33 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../push_swap.h"
 
-void swap(t_list **stack, char AorB) 
+static int stack_swap(t_list **stack) 
 {
     t_list *arrow;
     int i;
 
     arrow = *stack;
     if (!arrow || !arrow -> next)
-        return;
-    else
-    {
-        i = arrow -> content;
-        arrow -> content = arrow -> next -> content;
-        arrow -> next -> content = i;
-        i = arrow -> position;
-        arrow -> position = arrow -> next -> position;   // need to implement a real swap for the node and even make it recorsive for ss
-        arrow -> next -> position = i;
-        if(AorB == 'a')
-            write(1,"sa\n",4);
-        else if (AorB == 'b')
-            write(1,"sb\n",4);
-        else
-            return;
-    }
+        return (1);
+    i = arrow -> content;
+    arrow -> content = arrow -> next -> content;
+    arrow -> next -> content = i;
+    i = arrow -> position;
+    arrow -> position = arrow -> next -> position;
+    arrow -> next -> position = i;
+    return (0);
 }
 
-void ss(t_list **stack_a, t_list **stack_b)
+void swap(t_list **stack_a, t_list **stack_b, char operation)
 {
-    swap(stack_a,'s');
-    swap(stack_b,'s');
-    write(1,"ss\n",4);
+    unsigned int err[2];
+
+    if (operation == 'a')
+    {
+        if (stack_swap(stack_a) == 0)
+            write(1,"sa\n",4);
+    }
+    else if (operation == 'b')
+    {
+        if (stack_swap(stack_b) == 0)
+            write(1,"sb\n",4);
+    }
+    else if (operation == 's')
+    {
+        err[0] = stack_swap(stack_a);
+        err[1] = stack_swap(stack_b);
+        if (err[0] == 0 || err[1] == 0)
+            write(1,"ss\n",4);
+    }
 }
 
 // int main ()
@@ -54,7 +62,7 @@ void ss(t_list **stack_a, t_list **stack_b)
 //     ft_lstcreate_back(&root2,5479);
 //     ft_lstcreate_back(&root2,1575);
 //     ft_lstcreate_back(&root2,54356);
-//     ss(&root1,&root2);
+//     swap(&root1,&root2,'a');
 //     while(root1)
 //     {
 //         printf("stack a :");
@@ -69,5 +77,4 @@ void ss(t_list **stack_a, t_list **stack_b)
 //         root2 = root2 -> next;
 //     }
 //     printf("----------------------------------\n");
-
 // }

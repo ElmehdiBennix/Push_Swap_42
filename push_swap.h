@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/17 03:25:38 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 16:34:28 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ t_list *split_args(int ac , char **av);
 void check_valid(char **av); // check for valid arguments
 
 //operation funcs
-void swap(t_list **stack, char AorB);
-void ss(t_list **stack_a, t_list **stack_b);
+void swap(t_list **stack_a, t_list **stack_b, char operation);
 void push(t_list **stack_a, t_list **stack_b, char stack);
-void reverse_rotate(t_list **stack, char AorB);
-void rrr(t_list **stack_a, t_list **stack_b);
-void rotate(t_list **stack, char AorB);
-void rr(t_list **stack_a, t_list **stack_b);
+void reverse_rotate(t_list **stack_a, t_list **stack_b, char operation);
+void rotate(t_list **stack_a, t_list **stack_b, char operation);
 
 //libft funcs
 int		ft_isdigit(int c);

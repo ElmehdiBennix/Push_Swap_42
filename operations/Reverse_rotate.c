@@ -6,74 +6,79 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:41 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/14 22:56:03 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 17:31:52 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../push_swap.h"
 
-void reverse_rotate(t_list **stack, char AorB)
+static int reverse_rotate_stack(t_list **stack)
 {
     t_list *arrow = *stack;
     t_list *second_last = NULL;
-    
-    // protection for ra
-    //                pb
-    //                [1]    11105 segmentation fault  ./push_swap -4 -45 45 554 -95 84 88 9878 665 484 64 69789 -5655 -87 454 14
 
-    //     bus error in ➜  push_swap42 git:(main) ✗ ./push_swap -4 -45 45 554 -95 in sort under 5 eleemts
-
-    // if (arrow)
-    //     return ;
-    while (arrow -> next != NULL) 
+    if (!arrow || !arrow -> next)
+        return (1);
+    while (arrow -> next)
     {
         second_last = arrow;
         arrow = arrow -> next;
     }
     second_last -> next = NULL;
-    // printf("arrow : %d \n", arrow -> content);
-    // printf("arrow : %p \n\n", arrow -> next);
-    // printf("second last : %d \n", arrow -> content);
-    // printf("second last : %p \n\n", arrow -> next);
     ft_lstadd_front(stack,arrow);
-    if(AorB == 'a')
-        write(1,"rra\n",5);
-    else if (AorB == 'b')
-        write(1,"rrb\n",5);
-    else if (AorB == 'r')
-        write(1,"rrr\n",5);
-;
+    return 0;
 }
 
-void rrr(t_list **stack_a, t_list **stack_b)
+void reverse_rotate(t_list **stack_a, t_list **stack_b, char operation)
 {
-    reverse_rotate(stack_a,'r');
-    reverse_rotate(stack_b,'r');
+    unsigned int err[2];
+
+    if (operation == 'a')
+    {
+        if (reverse_rotate_stack(stack_a) == 0)
+            write(1,"rra\n",5);
+    }
+    else if (operation == 'b')
+    {
+        if (reverse_rotate_stack(stack_b) == 0)
+            write(1,"rrb\n",5);
+    }
+    else if (operation == 'r')
+    {
+        err[0] = reverse_rotate_stack(stack_a);
+        err[1] = reverse_rotate_stack(stack_b);
+        if (err[0] == 0 || err[1] == 0)
+            write(1,"rrr\n",5);    
+    }
 }
 
 // int main ()
 // {
 //     t_list *root1 = ft_lstnew(90000);
-//     ft_lstcreate_back(&root1,768);
-//     ft_lstcreate_back(&root1,1);
-//     ft_lstcreate_back(&root1,50);
-//     // t_list *root2 = ft_lstnew(50000);
-//     // ft_lstcreate_back(&root2,5479);
+//     // ft_lstcreate_back(&root1,768);
+//     // ft_lstcreate_back(&root1,1);
+//     // ft_lstcreate_back(&root1,50);
+//     t_list *root2 = ft_lstnew(50000);
+//     ft_lstcreate_back(&root2,5479);
 //     // ft_lstcreate_back(&root2,1575);
 //     // ft_lstcreate_back(&root2,54356);
-//     reverse_rotate(&root1,'a');
+//     reverse_rotate(&root1,&root2,'r');
 //     while(root1)
 //     {
 //         printf("stack a :");
-//         printf("%d and p = %p \n",root1->content,root1->next);
+//         printf("%d\n",root1->content);
+//         // printf("%d and p = %p \n",root1->content,root1->next);
+//         // printf("%d and p = %p \n",root1->content,root1->next);
 //         root1 = root1 -> next;
 //     }
 //     printf("----------------------------------\n");
-//     // while(root2)
-//     // {
-//     //     printf("stack b :");
-//     //     printf("%d\n",root2->content);
-//     //     root2 = root2 -> next;
-//     // }
-//     // printf("----------------------------------\n");
+//     while(root2)
+//     {
+//         printf("stack b :");
+//         printf("%d\n",root2->content);
+//         // printf("%d and p = %p \n",root2->content,root2->next);
+//         // printf("%d and p = %p \n",root2->content,root2->next);
+//         root2 = root2 -> next;
+//     }
+//     printf("----------------------------------\n");
 // }

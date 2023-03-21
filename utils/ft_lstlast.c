@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:06:42 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/05 09:22:21 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 17:14:27 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstlast(t_list *lst)
 
 	arrow = lst;
 	if (arrow)
-		while (arrow ->next != NULL)
+		while (arrow -> next != NULL)
 			arrow = arrow -> next;
 	return (arrow);
 }

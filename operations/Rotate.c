@@ -6,34 +6,45 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:05 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/14 19:28:01 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 17:32:57 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../push_swap.h"
 
-void rotate(t_list **stack, char AorB)
+static int rotate_stack(t_list **stack)
 {
-    t_list *tmp = *stack;
+    t_list *arrow = *stack;
 
+    if (!arrow || !arrow -> next)
+        return (1);
     *stack = (*stack) -> next;
-    tmp -> next = NULL;
-    
-    ft_lstadd_back(stack, tmp);
-    if(AorB == 'a')
-        write(1,"ra\n",4);
-    else if (AorB == 'b')
-        write(1,"rb\n",4);
-    else
-        return;
+    arrow -> next = NULL;
+    ft_lstadd_back(stack, arrow);
+    return (0);
 }
 
-void rr(t_list **stack_a, t_list **stack_b)
+void rotate(t_list **stack_a, t_list **stack_b, char operation)
 {
-    rotate(stack_a,'r');
-    rotate(stack_b,'r');
-    write(1,"rr\n",4);
+    unsigned int err[2];
 
+    if (operation == 'a')
+    {
+        if (rotate_stack(stack_a) == 0)
+            write(1,"ra\n",4);
+    }
+    else if (operation == 'b')
+    {
+        if (rotate_stack(stack_b) == 0)
+            write(1,"rb\n",4);
+    }
+    else if (operation == 'r')
+    {
+        err[0] = rotate_stack(stack_a);
+        err[1] = rotate_stack(stack_b);
+        if (err[0] == 0 || err[1] == 0)
+            write(1,"rr\n",4);
+    }
 }
 
 // int main ()
@@ -46,7 +57,7 @@ void rr(t_list **stack_a, t_list **stack_b)
 //     ft_lstcreate_back(&root2,5479);
 //     ft_lstcreate_back(&root2,1575);
 //     ft_lstcreate_back(&root2,54356);
-//     rr(&root1,&root2);
+//     rotate(&root1,&root2,'r');
 //     while(root1)
 //     {
 //         printf("stack a :");
@@ -59,22 +70,6 @@ void rr(t_list **stack_a, t_list **stack_b)
 //         printf("stack b :");
 //         printf("%d\n",root2->content);
 //         root2 = root2 -> next;
-//     }
-//     printf("----------------------------------\n");
-// }
-
-// int main ()
-// {
-//     t_list *root1 = ft_lstnew(90000);
-//     ft_lstcreate_back(&root1,768);
-//     ft_lstcreate_back(&root1,1);
-//     ft_lstcreate_back(&root1,50);
-//     rotate(&root1);
-//     while(root1)
-//     {
-//         printf("stack a :");
-//         printf("%d\n",root1->content);
-//         root1 = root1 -> next;
 //     }
 //     printf("----------------------------------\n");
 // }

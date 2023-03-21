@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/17 02:59:19 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/21 17:39:37 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,25 +140,25 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
     if (size == 1)
         return;
     else if (size == 2 && arrow -> content > arrow -> next -> content)
-        swap(stack_a, 'a');
+        swap(stack_a, stack_b, 'a');
     else if (size == 3)
     {
         if(arrow -> position == 1 && arrow -> next -> position == 0)
-            swap(stack_a, 'a');
+            swap(stack_a, stack_b, 'a');
         else if (arrow -> position == 2 && arrow -> next -> position == 1)
         {
-            swap(stack_a,'a');
-            reverse_rotate(stack_a,'a');
+            swap(stack_a, stack_b,'a');
+            reverse_rotate(stack_a, stack_b,'a');
         }
         else if (arrow -> position == 2 && arrow -> next -> position == 0)
-            rotate(stack_a,'a');
+            rotate(stack_a, stack_b,'a');
         else if(arrow -> position == 0 && arrow -> next -> position == 2)
         {
-            swap(stack_a,'a');
-            rotate(stack_a,'a');
+            swap(stack_a, stack_b,'a');
+            rotate(stack_a, stack_b, 'a');
         }
         else if(arrow -> position == 1 && arrow -> next -> position == 2)
-            reverse_rotate(stack_a,'a'); // print the a'' in function recusive too
+            reverse_rotate(stack_a, stack_b,'a'); // print the a'' in function recusive too
     }
     else if (size == 4)
     {
@@ -167,7 +167,7 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
         if (arrow -> index == 0 || arrow -> index == 1)
         {
             if(arrow -> index == 1)
-                rotate(stack_a,'a');
+                rotate(stack_a, stack_b,'a');
             push(stack_a,stack_b,'b');
             init_position(*stack_a); // make it dont last just a copy of positon
             sort_under_five(size - 1,stack_a,stack_b);
@@ -177,7 +177,7 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
         else
         {
             while ((*stack_a) -> position != 0)
-                reverse_rotate(stack_a,'a');
+                reverse_rotate(stack_a, stack_b,'a');
             push(stack_a,stack_b,'b');
             init_position(*stack_a); // make it dont last just a copy of positon
             sort_under_five(size - 1,stack_a,stack_b);
@@ -197,10 +197,10 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
         if (arrow -> index == 0 || arrow -> index == 1)
         {
             while ((*stack_a) -> position != 0)
-                rotate(stack_a,'a');
+                rotate(stack_a, stack_b,'a');
             push(stack_a,stack_b,'b');
             while ((*stack_a) -> position != 1)
-                rotate(stack_a,'a');
+                rotate(stack_a, stack_b,'a');
             push(stack_a,stack_b,'b');
             init_position(*stack_a); // make it dont last just a copy of positon
             sort_under_five(size - 2,stack_a,stack_b);
@@ -211,10 +211,10 @@ void sort_under_five(int size, t_list **stack_a, t_list **stack_b)
         else
         {
             while ((*stack_a) -> position != 0)
-                reverse_rotate(stack_a,'a');
+                reverse_rotate(stack_a, stack_b,'a');
             push(stack_a,stack_b,'b');
             while ((*stack_a) -> position != 1)
-                reverse_rotate(stack_a,'a');
+                reverse_rotate(stack_a, stack_b,'a');
             push(stack_a,stack_b,'b');    
             init_position(*stack_a); // make it dont last just a copy of positon
             sort_under_five(size - 2,stack_a,stack_b);
@@ -254,12 +254,12 @@ void push_to_b(t_list **stack_a, t_list **stack_b , int chunk, int last_pos)
             else 
             {
                 push(stack_a,stack_b,'b');
-                rotate(stack_b,'b');
+                rotate(stack_a, stack_b,'b');
             }
             chunk--;
         }
         else
-            rotate(stack_a,'a');
+            rotate(stack_a, stack_b,'a');
         // need to hit the 300 scope in opitmization
     }
 }
@@ -288,9 +288,9 @@ void sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide)
             lstlen--;
         }
         else if(index <= lstlen  / 2)
-            rotate(stack_b, 'b');
+            rotate(stack_a, stack_b, 'b');
         else if(index >= lstlen / 2)
-            reverse_rotate(stack_b, 'b');
+            reverse_rotate(stack_a, stack_b, 'b');
     }
 }
 
@@ -305,8 +305,8 @@ int push_swap(int ac, char **av)
     stack_b = NULL;
 
     size = ft_lstsize(stack_a);
-    init_position(stack_a);
     init_index(stack_a);
+    init_position(stack_a);
 
     if (size <= 5)
         sort_under_five(size,&stack_a,&stack_b);
