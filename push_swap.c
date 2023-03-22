@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 14:38:55 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/22 21:02:53 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,10 @@ void	push_to_b(t_list **stack_a, t_list **stack_b, int chunk, int last_pos)
 	}
 }
 
-void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide)
+void	push_to_a(t_list **stack_a, t_list **stack_b, int lstlen)
 {
-	int	chunk;
-	int	reset;
 	int	index;
-	int	lstlen;
 
-	chunk = size / divide;
-	reset = chunk;
-	while (ft_lstsize(*stack_a))
-	{
-		push_to_b(stack_a, stack_b, chunk, reset);
-		reset += chunk;
-	}
-	lstlen = ft_lstsize(*stack_b) - 1;
 	while (*stack_b)
 	{
 		init_index(*stack_b);
@@ -64,6 +53,23 @@ void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide)
 		else if (index >= lstlen / 2)
 			reverse_rotate(stack_a, stack_b, 'b');
 	}
+}
+
+void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide)
+{
+	int	chunk;
+	int	reset;
+	int	lstlen;
+
+	chunk = size / divide;
+	reset = chunk;
+	while (ft_lstsize(*stack_a))
+	{
+		push_to_b(stack_a, stack_b, chunk, reset);
+		reset += chunk;
+	}
+	lstlen = ft_lstsize(*stack_b) - 1;
+	push_to_a(stack_a, stack_b, lstlen);
 }
 
 int	push_swap(int ac, char **av)
@@ -84,19 +90,18 @@ int	push_swap(int ac, char **av)
 		sort_chunks(size, &stack_a, &stack_b, 5);
 	else
 		sort_chunks(size, &stack_a, &stack_b, 10);
-
-	printf("\n");
-	while(stack_a)
-	{
-	    printf("|| stack : a = %d      with the position %d            with the index %d\n",stack_a -> content,stack_a-> position,stack_a -> index);
-	    stack_a = stack_a -> next;
-	}
-	printf("\n");
-	while(stack_b)
-	{
-	   printf("|| stack : b = %d      with the position %d            with the index %d\n",stack_b -> content,stack_b-> position,stack_b -> index);
-	    stack_b = stack_b -> next;
-	}
+	// printf("\n");
+	// while(stack_a)
+	// {
+	//     printf("|| stack : a = %d      with the position %d            with the index %d\n",stack_a -> content,stack_a-> position,stack_a -> index);
+	//     stack_a = stack_a -> next;
+	// }
+	// printf("\n");
+	// while(stack_b)
+	// {
+	//    printf("|| stack : b = %d      with the position %d            with the index %d\n",stack_b -> content,stack_b-> position,stack_b -> index);
+	//     stack_b = stack_b -> next;
+	// }
 	return (0);
 }
 
