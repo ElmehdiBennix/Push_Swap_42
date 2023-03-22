@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 04:39:08 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/22 04:41:25 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,5 @@ int	main(int ac, char **av)
 	err = push_swap(ac, av);
 	return (err);
 }
-
+// optimization and bonus and rename + making every thing look pretty ;3
 // leaks still
