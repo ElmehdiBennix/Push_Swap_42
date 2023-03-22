@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 23:26:23 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/22 04:38:15 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static char	**split_args(int ac, char **av)
+static	char	**split_args(int ac, char **av)
 {
 	int		i;
 	char	*str;
@@ -42,10 +42,10 @@ static char	**split_args(int ac, char **av)
 
 t_list	*get_node(int ac, char **av)
 {
-	t_list *p;
-	t_list *root;
-	t_list *arrow;
-	char **res;
+	t_list	*p;
+	t_list	*root;
+	t_list	*arrow;
+	char	**res;
 
 	res = split_args(ac, av);
 	if (res == NULL)

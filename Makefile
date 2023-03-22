@@ -5,8 +5,7 @@ LIB := ft_libft42/libft.a
 
 CC := cc
 
-CFLAGS := -g -Wall -Wextra 
-# -Werror
+CFLAGS := -g -Wall -Wextra -Werror
 
 HEADER := push_swap.h
 

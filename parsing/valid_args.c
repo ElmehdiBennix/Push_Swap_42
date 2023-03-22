@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:52 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 23:58:07 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/22 04:35:30 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static	void sign_check(char **tmp, unsigned int allowed)
+static void	sign_check(char **tmp, unsigned int allowed)
 {
 	(*tmp)++;
 	if (ft_isdigit(**tmp))
@@ -29,7 +29,7 @@ static	void sign_check(char **tmp, unsigned int allowed)
 		failure(7);
 }
 
-static void allowed_check(char **tmp, unsigned int *allowed)
+static void	allowed_check(char **tmp, unsigned int *allowed)
 {
 	if (**tmp == '\0')
 		failure(1);
@@ -53,8 +53,8 @@ static void allowed_check(char **tmp, unsigned int *allowed)
 
 void	check_valid(char **av)
 {
-	char *tmp;
-	unsigned int allowed;
+	char			*tmp;
+	unsigned int	allowed;
 
 	while (*(++av))
 	{

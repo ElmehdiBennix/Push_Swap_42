@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 20:47:41 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/22 00:53:13 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	push(t_list **stack_a, t_list **stack_b, char operation)
 	{
 		if (!(*stack_b))
 			return ;
-		tmp = (*stack_b)-> next;
-		(*stack_b)-> next = *stack_a;
+		tmp = (*stack_b)->next;
+		(*stack_b)->next = *stack_a;
 		*stack_a = *stack_b;
 		*stack_b = tmp;
 		write(1, "pa\n", 4);
@@ -30,8 +30,8 @@ void	push(t_list **stack_a, t_list **stack_b, char operation)
 	{
 		if (!(*stack_a))
 			return ;
-		tmp = (*stack_a)-> next;
-		(*stack_a)-> next = *stack_b;
+		tmp = (*stack_a)->next;
+		(*stack_a)->next = *stack_b;
 		*stack_b = *stack_a;
 		*stack_a = tmp;
 		write(1, "pb\n", 4);
