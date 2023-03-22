@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 04:38:43 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/22 14:24:29 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct node
 //parsing and error
 void	check_valid(char **av);
 t_list	*get_node(int ac, char **av);
+
 //operation funcs
 void	swap(t_list **stack_a, t_list **stack_b, char operation);
 void	push(t_list **stack_a, t_list **stack_b, char stack);
@@ -54,12 +55,12 @@ char	**ft_split(char *str, char delim);
 char	**free_2d(char **str);
 
 // linked list funcs
-int			ft_lstsize(t_list *lst);
-void		ft_lstcreate_front(t_list **lst, int content);
-void		ft_lstcreate_back(t_list **lst, int content);
-void		ft_lstadd_front(t_list **lst, t_list *new);
-void		ft_lstadd_back(t_list **lst, t_list *new);
-t_list		*ft_lstnew(int content);
-t_list		*ft_lstlast(t_list *lst);
+int		ft_lstsize(t_list *lst);
+void	ft_lstcreate_front(t_list **lst, int content);
+void	ft_lstcreate_back(t_list **lst, int content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lstnew(int content);
+t_list	*ft_lstlast(t_list *lst);
 
 #endif
