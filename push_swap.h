@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 14:24:29 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/22 21:11:41 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct node
 	struct node	*next;
 }				t_list;
 
-//parsing and error
+//parsing
 void	check_valid(char **av);
 t_list	*get_node(int ac, char **av);
 
