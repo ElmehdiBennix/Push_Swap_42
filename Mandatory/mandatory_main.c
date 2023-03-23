@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 02:24:35 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/23 02:25:14 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/23 02:58:44 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		exit(1);
 	err = push_swap(ac, av);
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	return (err);
 }
 
