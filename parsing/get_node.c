@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/23 00:21:21 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/23 01:04:29 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static	char	**split_args(int ac, char **av)
 	int		i;
 	char	*str;
 	char	**res;
-	char	*tmp;
 
 	i = 1;
 	while (*(++av) && ac > i)
@@ -26,10 +25,8 @@ static	char	**split_args(int ac, char **av)
 			str = ft_strdup(*av);
 		else
 		{
-			tmp = ft_strjoin(str, " ");
-			free(str);
-			str = ft_strjoin(tmp, *av);
-			free(tmp);
+			str = ft_strjoin(str, " ");
+			str = ft_strjoin(str, *av);
 		}
 		i++;
 	}

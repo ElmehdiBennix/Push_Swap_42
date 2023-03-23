@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 19:52:57 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/21 21:37:01 by ebennix          ###   ########.fr       */
+/*   Created: 2023/03/23 00:54:13 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/23 00:54:56 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strchr(const char *s, int c )
 {
-	char			*str;
-	size_t			len;
-	unsigned int	i;
-	unsigned int	j;
+	int		i;
 
 	i = 0;
-	j = 0;
-	if (!s1 || !s2)
+	if (!s)
 		return (NULL);
-	len = ft_strlen(s1)+ft_strlen(s2) + 1;
-	str = (char *)malloc(len * sizeof(char));
-	if (!str)
-		return (NULL);
-	while (s1[i] != '\0' && i < len)
+	while (s[i] != '\0')
 	{
-		str[i] = s1[i];
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	while (s2[j] != '\0' && i < len)
-			str[i++] = s2[j++];
-	str[i] = '\0';
-	return (str);
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }

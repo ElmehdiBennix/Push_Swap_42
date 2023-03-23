@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/23 00:17:33 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/23 02:13:46 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+# define BUFFER_SIZE 10
 
 typedef struct node
 {
@@ -45,6 +47,10 @@ void	init_position(t_list *stack);
 int		get_index(t_list *stack, int position);
 void	sort_under_five(int size, t_list **stack_a, t_list **stack_b);
 void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide);
+int		push_swap(int ac, char **av);
+
+
+char	*get_next_line(int fd);
 
 //libft funcs
 int		ft_isdigit(int c);
@@ -54,6 +60,7 @@ char	*ft_strdup(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *str, char delim);
 char	**free_2d(char **str);
+char	*ft_strchr(const char *s, int c);
 
 // linked list funcs
 int		ft_lstsize(t_list *lst);

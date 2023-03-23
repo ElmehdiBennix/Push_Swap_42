@@ -6,13 +6,13 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/23 00:14:00 by ebennix           #+#    #+#              #
-#    Updated: 2023/03/23 00:23:34 by ebennix          ###   ########.fr        #
+#    Updated: 2023/03/23 02:50:10 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXE := push_swap
+M_EXE := push_swap
 
-LIB := ft_libft42/libft.a
+B_EXE := checker
 
 CC := cc
 
@@ -20,35 +20,47 @@ CFLAGS := -g -Wall -Wextra -Werror
 
 HEADER := push_swap.h
 
-FILES := push_swap						parsing/get_node					parsing/valid_args					\
-		 operations/Push				operations/Reverse_rotate			operations/Rotate					operations/Swap						\
-		 utils/lib_utils/ft_atoi     	utils/lib_utils/ft_lstadd_back		utils/lib_utils/ft_lstadd_front     utils/lib_utils/ft_lstcreate_back	\
-		 utils/lib_utils/ft_lstlast     utils/lib_utils/ft_lstnew			utils/lib_utils/ft_lstsize			utils/lib_utils/ft_lstcreate_front	\
-		 utils/lib_utils/ft_split		utils/lib_utils/ft_strdup			utils/lib_utils/ft_strjoin			utils/lib_utils/ft_lstfree			\
-		 utils/lib_utils/ft_strlen		utils/lib_utils/ft_isdigit			\
-		 utils/ps_utils/error			utils/ps_utils/init					utils/ps_utils/get_index     		utils/ps_utils/under_five			\
-		 utils/ps_utils/above_five		\
+FILES  := Mandatory/push_swap		parsing/get_node			parsing/valid_args										  \
+		  operations/Push			operations/Reverse_rotate	operations/Rotate			operations/Swap				  \
+		  utils/lib/ft_atoi			utils/lib/ft_lstadd_back	utils/lib/ft_lstadd_front	utils/lib/ft_lstcreate_back	  \
+		  utils/lib/ft_lstlast		utils/lib/ft_lstnew			utils/lib/ft_lstsize		utils/lib/ft_lstcreate_front  \
+		  utils/lib/ft_split		utils/lib/ft_strdup			utils/lib/ft_strjoin		utils/lib/ft_lstfree		  \
+		  utils/lib/ft_strlen		utils/lib/ft_isdigit			 													  \
+		  utils/ps/error			utils/ps/init				utils/ps/get_index     		utils/ps/under_five			  \
+		  utils/ps/above_five		 																					  \
 
-SRC := $(FILES:=.c)
-OBJ := $(SRC:.c=.o)
+M_FILES := Mandatory/mandatory_main																						  \
+
+B_FILES := Bonus/bonus_main		Bonus/checker		utils/gnl/get_next_line		utils/lib/ft_strchr						  \
+
+M_SRC := $(M_FILES:=.c) $(FILES:=.c)
+M_OBJ := $(M_SRC:.c=.o)
+B_SRC := $(B_FILES:=.c) $(FILES:=.c)
+B_OBJ := $(B_SRC:.c=.o)
 
 RM := rm -rf
 
 m := MakefileAutoPush
 
-all : $(EXE)
 
-$(EXE) : $(OBJ)
-	$(CC) $(OBJ) -o $(EXE)
+all : $(M_EXE)
+
+bonus : $(B_EXE)
+
+$(M_EXE) : $(M_OBJ)
+	$(CC) $(M_OBJ) -o $(M_EXE)
+
+$(B_EXE) : $(B_OBJ)
+	$(CC) $(B_OBJ) -o $(B_EXE)
 
 %.o : %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	$(RM) $(OBJ)
+	$(RM) $(M_OBJ) $(B_OBJ)
 
 fclean : clean
-	$(RM) $(EXE)
+	$(RM) $(M_EXE) $(B_EXE)
 
 re : fclean all
 
@@ -58,4 +70,4 @@ git :
 	git commit -m "$(m)"
 	git push
 
-.PHONY : all clean fclean re git
+.PHONY : all bonus clean fclean re git

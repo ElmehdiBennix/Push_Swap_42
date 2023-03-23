@@ -6,11 +6,11 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/23 00:21:43 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/23 02:24:59 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	push_swap(int ac, char **av)
 {
@@ -33,18 +33,6 @@ int	push_swap(int ac, char **av)
 	ft_lstfree(stack_a);
 	return (0);
 }
-
-int	main(int ac, char **av)
-{
-	int	err;
-
-	if (ac == 1)
-		exit(1);
-	err = push_swap(ac, av);
-	return (err);
-}
-
-// optimization and bonus and rename + making every thing look pretty ;3
 
 // printf("\n");
 // while(stack_a)
