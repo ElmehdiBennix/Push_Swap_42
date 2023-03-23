@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 21:11:41 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/23 00:17:33 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	init_index(t_list *stack);
 void	init_position(t_list *stack);
 int		get_index(t_list *stack, int position);
 void	sort_under_five(int size, t_list **stack_a, t_list **stack_b);
+void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide);
 
 //libft funcs
 int		ft_isdigit(int c);
@@ -56,10 +57,11 @@ char	**free_2d(char **str);
 
 // linked list funcs
 int		ft_lstsize(t_list *lst);
-void	ft_lstcreate_front(t_list **lst, int content);
-void	ft_lstcreate_back(t_list **lst, int content);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstfree(void *stack);
 void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstcreate_back(t_list **lst, int content);
+void	ft_lstcreate_front(t_list **lst, int content);
 t_list	*ft_lstnew(int content);
 t_list	*ft_lstlast(t_list *lst);
 

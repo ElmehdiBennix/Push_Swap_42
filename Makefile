@@ -1,3 +1,14 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/23 00:14:00 by ebennix           #+#    #+#              #
+#    Updated: 2023/03/23 00:23:34 by ebennix          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 EXE := push_swap
 
@@ -9,14 +20,14 @@ CFLAGS := -g -Wall -Wextra -Werror
 
 HEADER := push_swap.h
 
-FILES := push_swap		parsing/get_node		parsing/valid_args \
-		 operations/Push	operations/Reverse_rotate		operations/Rotate	operations/Swap \
-		 utils/lib_utils/ft_atoi 	utils/lib_utils/ft_lstadd_back  utils/lib_utils/ft_lstadd_front  utils/lib_utils/ft_lstcreate_back	\
-		 utils/lib_utils/ft_lstcreate_front	\
-		 utils/lib_utils/ft_lstlast	utils/lib_utils/ft_lstnew		utils/lib_utils/ft_lstsize	utils/lib_utils/ft_split	utils/lib_utils/ft_strdup \
-		 utils/lib_utils/ft_strjoin \
-		 utils/lib_utils/ft_strlen  utils/lib_utils/ft_isdigit	utils/ps_utils/error		utils/ps_utils/init		utils/ps_utils/get_index	\
-		 utils/ps_utils/under_five	\
+FILES := push_swap						parsing/get_node					parsing/valid_args					\
+		 operations/Push				operations/Reverse_rotate			operations/Rotate					operations/Swap						\
+		 utils/lib_utils/ft_atoi     	utils/lib_utils/ft_lstadd_back		utils/lib_utils/ft_lstadd_front     utils/lib_utils/ft_lstcreate_back	\
+		 utils/lib_utils/ft_lstlast     utils/lib_utils/ft_lstnew			utils/lib_utils/ft_lstsize			utils/lib_utils/ft_lstcreate_front	\
+		 utils/lib_utils/ft_split		utils/lib_utils/ft_strdup			utils/lib_utils/ft_strjoin			utils/lib_utils/ft_lstfree			\
+		 utils/lib_utils/ft_strlen		utils/lib_utils/ft_isdigit			\
+		 utils/ps_utils/error			utils/ps_utils/init					utils/ps_utils/get_index     		utils/ps_utils/under_five			\
+		 utils/ps_utils/above_five		\
 
 SRC := $(FILES:=.c)
 OBJ := $(SRC:.c=.o)
@@ -48,5 +59,3 @@ git :
 	git push
 
 .PHONY : all clean fclean re git
-
-

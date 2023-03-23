@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 04:38:15 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/23 00:21:21 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ t_list	*get_node(int ac, char **av)
 	t_list	*root;
 	t_list	*arrow;
 	char	**res;
+	char	**tmp;
 
 	res = split_args(ac, av);
-	if (res == NULL)
-		exit(10);
+	tmp = res;
 	root = ft_lstnew(ft_atoi(*res));
 	arrow = root;
 	while (*(++res))
@@ -65,5 +65,6 @@ t_list	*get_node(int ac, char **av)
 		}
 		arrow = arrow->next;
 	}
+	free_2d(tmp);
 	return (root);
 }

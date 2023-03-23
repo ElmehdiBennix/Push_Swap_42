@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 09:52:25 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/23 00:04:18 by ebennix          ###   ########.fr       */
+/*   Created: 2023/03/23 00:22:22 by ebennix           #+#    #+#             */
+/*   Updated: 2023/03/23 00:22:54 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-void	failure(int err)
+void    ft_lstfree(void *stack)
 {
-	write(2, "Error\n", 7);
-	exit(err);
+	t_list  *arrow;
+
+	arrow = stack;
+	while (arrow)
+	{		
+		free(arrow);
+		arrow = arrow -> next;
+	}
 }
