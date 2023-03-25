@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/23 00:14:00 by ebennix           #+#    #+#              #
-#    Updated: 2023/03/23 02:50:10 by ebennix          ###   ########.fr        #
+#    Updated: 2023/03/25 02:15:58 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ FILES  := Mandatory/push_swap		parsing/get_node			parsing/valid_args										  
 
 M_FILES := Mandatory/mandatory_main																						  \
 
-B_FILES := Bonus/bonus_main		Bonus/checker		utils/gnl/get_next_line		utils/lib/ft_strchr						  \
+B_FILES := Bonus/bonus_main		Bonus/checker		utils/gnl/get_next_line		utils/lib/ft_strchr		utils/lib/ft_strncmp  \
 
 M_SRC := $(M_FILES:=.c) $(FILES:=.c)
 M_OBJ := $(M_SRC:.c=.o)

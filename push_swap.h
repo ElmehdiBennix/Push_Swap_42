@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/23 02:13:46 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/25 02:15:37 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct node
 	struct node	*next;
 }				t_list;
 
+typedef struct operation
+{
+	char				*content;
+	struct operation	*next;
+}						s_list;
+
 //parsing
 void	check_valid(char **av);
 t_list	*get_node(int ac, char **av);
@@ -47,7 +53,10 @@ void	init_position(t_list *stack);
 int		get_index(t_list *stack, int position);
 void	sort_under_five(int size, t_list **stack_a, t_list **stack_b);
 void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide);
+
+
 int		push_swap(int ac, char **av);
+int	checker(int ac, char **av);
 
 
 char	*get_next_line(int fd);
@@ -61,6 +70,8 @@ char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *str, char delim);
 char	**free_2d(char **str);
 char	*ft_strchr(const char *s, int c);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
 
 // linked list funcs
 int		ft_lstsize(t_list *lst);
