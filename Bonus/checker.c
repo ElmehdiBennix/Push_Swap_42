@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 01:11:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 02:06:48 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 02:16:58 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ static	void check_line(t_list **stack_a, t_list **stack_b)
 
 static	void	position_checker(t_list	**stack_a, t_list	**stack_b)
 {
+	int i = 0;
+	int err = FALSE;
 	t_list *arrow = *stack_a;
 
-	int i = 0;
-	int err = 0;
 	printf("\n");
 	while (arrow -> next)
 	{
