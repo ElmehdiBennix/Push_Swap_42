@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 05:32:51 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 05:49:19 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,31 +31,31 @@ typedef struct node
 	int			position;
 	struct node	*next;
 }				t_list;
+
+int		checker(int ac, char **av);
+int		push_swap(int ac, char **av);
+
 //parsing
 void	check_valid(char **av);
 t_list	*get_node(int ac, char **av);
 
 //operation funcs
-void	swap(t_list **stack_a, t_list **stack_b, char operation, int print);
 void	push(t_list **stack_a, t_list **stack_b, char stack, int print);
+void	swap(t_list **stack_a, t_list **stack_b, char operation, int print);
+void	rotate(t_list **stack_a, t_list **stack_b, char operation, int print);
 void	reverse_rotate(t_list **stack_a, t_list **stack_b,
 			char operation, int print);
-void	rotate(t_list **stack_a, t_list **stack_b, char operation, int print);
 
 //push_swap utils
 void	failure(int err);
+char	*get_next_line(int fd);
 void	init_index(t_list *stack);
 void	init_position(t_list *stack);
 int		get_index(t_list *stack, int position);
 void	sort_under_five(int size, t_list **stack_a, t_list **stack_b);
 void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide);
 
-int		push_swap(int ac, char **av);
-int		checker(int ac, char **av);
-
-char	*get_next_line(int fd);
-
-//libft funcs
+//libft utils
 int		ft_isdigit(int c);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(char *str);
@@ -66,7 +66,7 @@ char	**free_2d(char **str);
 char	*ft_strchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-// linked list funcs
+//linked list utils
 int		ft_lstsize(t_list *lst);
 void	ft_lstfree(void *stack);
 void	ft_lstadd_back(t_list **lst, t_list *new);
