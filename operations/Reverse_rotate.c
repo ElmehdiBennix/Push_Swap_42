@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:41 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 01:52:05 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 02:20:42 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int	reverse_rotate_stack(t_list **stack)
 	return (0);
 }
 
-void	reverse_rotate(t_list **stack_a, t_list **stack_b, char operation, int print)
+void	reverse_rotate(t_list **stack_a, t_list **stack_b,
+							char operation, int print)
 {
 	unsigned int	err[2];
 

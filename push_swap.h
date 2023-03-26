@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 01:53:32 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 05:32:51 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <string.h>
 # include <unistd.h>
 
-# define BUFFER_SIZE 10
 # define TRUE 1
 # define FALSE 0
+# define BUFFER_SIZE 10
 
 typedef struct node
 {
@@ -31,13 +31,6 @@ typedef struct node
 	int			position;
 	struct node	*next;
 }				t_list;
-
-typedef struct operation
-{
-	char				*content;
-	struct operation	*next;
-}						s_list;
-
 //parsing
 void	check_valid(char **av);
 t_list	*get_node(int ac, char **av);
@@ -45,7 +38,8 @@ t_list	*get_node(int ac, char **av);
 //operation funcs
 void	swap(t_list **stack_a, t_list **stack_b, char operation, int print);
 void	push(t_list **stack_a, t_list **stack_b, char stack, int print);
-void	reverse_rotate(t_list **stack_a, t_list **stack_b, char operation, int print);
+void	reverse_rotate(t_list **stack_a, t_list **stack_b,
+			char operation, int print);
 void	rotate(t_list **stack_a, t_list **stack_b, char operation, int print);
 
 //push_swap utils
@@ -56,10 +50,8 @@ int		get_index(t_list *stack, int position);
 void	sort_under_five(int size, t_list **stack_a, t_list **stack_b);
 void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide);
 
-
 int		push_swap(int ac, char **av);
-int	checker(int ac, char **av);
-
+int		checker(int ac, char **av);
 
 char	*get_next_line(int fd);
 
@@ -72,8 +64,7 @@ char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split(char *str, char delim);
 char	**free_2d(char **str);
 char	*ft_strchr(const char *s, int c);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
-
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 // linked list funcs
 int		ft_lstsize(t_list *lst);

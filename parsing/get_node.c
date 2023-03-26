@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 09:59:16 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/24 03:04:56 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 05:43:24 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,31 +37,40 @@ static	char	**split_args(int ac, char **av)
 	return (res);
 }
 
-t_list	*get_node(int ac, char **av)
+static	void	check_dup(t_list	**root)
 {
-	t_list	*p;
-	t_list	*root;
 	t_list	*arrow;
-	char	**res;
-	char	**tmp;
+	t_list	*p;
 
-	res = split_args(ac, av);
-	tmp = res;
-	root = ft_lstnew(ft_atoi(*res));
-	arrow = root;
-	while (*(++res))
-		ft_lstcreate_back(&root, ft_atoi(*res));
+	arrow = *root;
 	while (arrow)
 	{
 		p = arrow->next;
 		while (p)
 		{
 			if (arrow->content == p->content)
+			{
+				ft_lstfree(*root);
 				failure(2);
+			}
 			p = p->next;
 		}
 		arrow = arrow->next;
 	}
+}
+
+t_list	*get_node(int ac, char **av)
+{
+	char	**res;
+	char	**tmp;
+	t_list	*root;
+
+	res = split_args(ac, av);
+	tmp = res;
+	root = ft_lstnew(ft_atoi(*res));
+	while (*(++res))
+		ft_lstcreate_back(&root, ft_atoi(*res));
+	check_dup(&root);
 	free_2d(tmp);
 	return (root);
 }
