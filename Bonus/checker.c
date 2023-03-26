@@ -6,16 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 01:11:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 01:56:57 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 02:06:48 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// #define SORTED = 0;
-// #define NOT_SORTED = 1;
-
-void check_line(t_list **stack_a, t_list **stack_b)
+static	void check_line(t_list **stack_a, t_list **stack_b)
 {
 	char *line;
 	line = get_next_line(0);
@@ -48,10 +45,9 @@ void check_line(t_list **stack_a, t_list **stack_b)
 		free(line);
 		line = get_next_line(0);
 	}
-	free(line); // dub free
 }
 
-void	position_checker(t_list	**stack_a, t_list	**stack_b)
+static	void	position_checker(t_list	**stack_a, t_list	**stack_b)
 {
 	t_list *arrow = *stack_a;
 
@@ -61,14 +57,14 @@ void	position_checker(t_list	**stack_a, t_list	**stack_b)
 	while (arrow -> next)
 	{
 		if (arrow -> position != i)
-			err = 1;
-		arrow = arrow -> next;
+			err = TRUE;
 		i++;
+		arrow = arrow -> next;
 	}
-	if (err == 0 && (*stack_b) == NULL)
+	if (err == FALSE && (*stack_b) == NULL)
 		write(1,"OK\n",3);
-	if (err == 1 || (*stack_b) != NULL)
-		write(2,"KO\n",3);
+	if (err == TRUE || (*stack_b) != NULL)
+		write(1,"KO\n",3);
 }
 
 int	checker(int ac, char **av)
@@ -80,7 +76,6 @@ int	checker(int ac, char **av)
 	stack_a = get_node(ac, av);
 	stack_b = NULL;
 	init_position(stack_a);
-	//first eteration dosent show up and segfult
 	check_line(&stack_a ,&stack_b);
 	position_checker(&stack_a,&stack_b);
 	ft_lstfree(stack_a);
