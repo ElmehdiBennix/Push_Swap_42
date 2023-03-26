@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/25 02:15:37 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 01:53:32 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <unistd.h>
 
 # define BUFFER_SIZE 10
+# define TRUE 1
+# define FALSE 0
 
 typedef struct node
 {
@@ -41,10 +43,10 @@ void	check_valid(char **av);
 t_list	*get_node(int ac, char **av);
 
 //operation funcs
-void	swap(t_list **stack_a, t_list **stack_b, char operation);
-void	push(t_list **stack_a, t_list **stack_b, char stack);
-void	reverse_rotate(t_list **stack_a, t_list **stack_b, char operation);
-void	rotate(t_list **stack_a, t_list **stack_b, char operation);
+void	swap(t_list **stack_a, t_list **stack_b, char operation, int print);
+void	push(t_list **stack_a, t_list **stack_b, char stack, int print);
+void	reverse_rotate(t_list **stack_a, t_list **stack_b, char operation, int print);
+void	rotate(t_list **stack_a, t_list **stack_b, char operation, int print);
 
 //push_swap utils
 void	failure(int err);

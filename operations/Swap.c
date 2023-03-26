@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 00:52:57 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 01:51:38 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,25 @@ static int	stack_swap(t_list **stack)
 	return (0);
 }
 
-void	swap(t_list **stack_a, t_list **stack_b, char operation)
+void	swap(t_list **stack_a, t_list **stack_b, char operation, int print)
 {
 	unsigned int	err[2];
 
 	if (operation == 'a')
 	{
-		if (stack_swap(stack_a) == 0)
+		if (stack_swap(stack_a) == 0 && print == TRUE)
 			write(1, "sa\n", 4);
 	}
 	else if (operation == 'b')
 	{
-		if (stack_swap(stack_b) == 0)
+		if (stack_swap(stack_b) == 0 && print == TRUE)
 			write(1, "sb\n", 4);
 	}
 	else if (operation == 's')
 	{
 		err[0] = stack_swap(stack_a);
 		err[1] = stack_swap(stack_b);
-		if (err[0] == 0 || err[1] == 0)
+		if ((err[0] == 0 || err[1] == 0) && print == TRUE)
 			write(1, "ss\n", 4);
 	}
 }

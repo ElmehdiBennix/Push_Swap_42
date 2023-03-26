@@ -6,13 +6,13 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 00:53:13 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 01:55:52 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	push(t_list **stack_a, t_list **stack_b, char operation)
+void	push(t_list **stack_a, t_list **stack_b, char operation, int print)
 {
 	t_list	*tmp;
 
@@ -24,7 +24,8 @@ void	push(t_list **stack_a, t_list **stack_b, char operation)
 		(*stack_b)->next = *stack_a;
 		*stack_a = *stack_b;
 		*stack_b = tmp;
-		write(1, "pa\n", 4);
+		if (print == TRUE)
+			write(1, "pa\n", 4);
 	}
 	else if (operation == 'b')
 	{
@@ -34,7 +35,8 @@ void	push(t_list **stack_a, t_list **stack_b, char operation)
 		(*stack_a)->next = *stack_b;
 		*stack_b = *stack_a;
 		*stack_a = tmp;
-		write(1, "pb\n", 4);
+		if (print == TRUE)
+			write(1, "pb\n", 4);
 	}
 }
 

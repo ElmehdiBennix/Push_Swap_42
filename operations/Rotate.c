@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:05 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/22 00:52:41 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/03/26 01:51:52 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,25 @@ static int	rotate_stack(t_list **stack)
 	return (0);
 }
 
-void	rotate(t_list **stack_a, t_list **stack_b, char operation)
+void	rotate(t_list **stack_a, t_list **stack_b, char operation, int print)
 {
 	unsigned int	err[2];
 
 	if (operation == 'a')
 	{
-		if (rotate_stack(stack_a) == 0)
+		if (rotate_stack(stack_a) == 0 && print == TRUE)
 			write(1, "ra\n", 4);
 	}
 	else if (operation == 'b')
 	{
-		if (rotate_stack(stack_b) == 0)
+		if (rotate_stack(stack_b) == 0 && print == TRUE)
 			write(1, "rb\n", 4);
 	}
 	else if (operation == 'r')
 	{
 		err[0] = rotate_stack(stack_a);
 		err[1] = rotate_stack(stack_b);
-		if (err[0] == 0 || err[1] == 0)
+		if ((err[0] == 0 || err[1] == 0) && print == TRUE)
 			write(1, "rr\n", 4);
 	}
 }
