@@ -12,15 +12,15 @@
 
 #include "../../push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *node)
 {
 	t_list	*arrow;
 
 	if (*lst == NULL)
-		*lst = new;
+		*lst = node;
 	else
 	{
 		arrow = ft_lstlast(*lst);
-		arrow -> next = new;
+		arrow -> next = node;
 	}
 }
