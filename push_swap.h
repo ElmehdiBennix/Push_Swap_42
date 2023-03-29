@@ -69,8 +69,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 //linked list utils
 int		ft_lstsize(t_list *lst);
 void	ft_lstfree(void *stack);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *node);
+void	ft_lstadd_front(t_list **lst, t_list *node);
 void	ft_lstcreate_back(t_list **lst, int content);
 void	ft_lstcreate_front(t_list **lst, int content);
 t_list	*ft_lstnew(int content);
