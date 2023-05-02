@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 01:11:14 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 05:47:09 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/02 02:47:31 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,34 @@ static	void	check_line(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-static	void	position_checker(t_list	**stack_a, t_list	**stack_b)
+int	position_checker(t_list	**stack_a, t_list	**stack_b, int flag)
 {
 	int	i ;
 	int	err ;
 
 	i = 0;
 	err = FALSE;
-	while ((*stack_a)-> next)
+	t_list *arrow = *stack_a;
+	while (arrow -> next)
 	{
-		if ((*stack_a)-> position != i)
+		if (arrow -> position != i)
 			err = TRUE;
 		i++;
-		*stack_a = (*stack_a)-> next;
+		arrow = arrow -> next;
 	}
 	if (err == FALSE && (*stack_b) == NULL)
-		write(1, "OK\n", 3);
+	{
+		if(flag == TRUE)
+			write(1, "OK\n", 3);
+		return (0);
+	}
 	if (err == TRUE || (*stack_b) != NULL)
-		write(1, "KO\n", 3);
+	{
+		if(flag == TRUE)
+			write(1, "KO\n", 3);
+		return(1);
+	}
+	return (0);
 }
 
 int	checker(int ac, char **av)
@@ -83,7 +93,7 @@ int	checker(int ac, char **av)
 	stack_b = NULL;
 	init_position(stack_a);
 	check_line(&stack_a, &stack_b);
-	position_checker(&stack_a, &stack_b);
+	position_checker(&stack_a, &stack_b,1);
 	ft_lstfree(stack_a);
 	return (0);
 }

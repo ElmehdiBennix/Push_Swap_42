@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:06:01 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 01:54:38 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/02 21:48:54 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static	void	push_to_b(t_list **stack_a, t_list **stack_b,
 				push(stack_a, stack_b, 'b', TRUE);
 			else
 			{
-				push(stack_a, stack_b, 'b', TRUE);
+				push(stack_a, stack_b, 'b', TRUE); // if size_b > 2 rotate
 				rotate(stack_a, stack_b, 'b', TRUE);
 			}
 			chunk--;
 		}
-		else
+		else 
 			rotate(stack_a, stack_b, 'a', TRUE);
 	}
 }
@@ -39,11 +39,13 @@ static	void	push_to_b(t_list **stack_a, t_list **stack_b,
 static	void	push_to_a(t_list **stack_a, t_list **stack_b, int lstlen)
 {
 	int	index;
+	int	index2;
 
 	while (*stack_b)
 	{
 		init_index(*stack_b);
 		index = get_index(*stack_b, lstlen);
+		index2 = get_index(*stack_b, lstlen - 1);
 		if ((*stack_b)->position == lstlen)
 		{
 			push(stack_a, stack_b, 'a', TRUE);
@@ -55,7 +57,7 @@ static	void	push_to_a(t_list **stack_a, t_list **stack_b, int lstlen)
 			reverse_rotate(stack_a, stack_b, 'b', TRUE);
 	}
 }
-
+// double check
 void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide)
 {
 	int	chunk;

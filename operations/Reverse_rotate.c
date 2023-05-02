@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:41 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 02:20:42 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/02 03:43:50 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,19 @@ void	reverse_rotate(t_list **stack_a, t_list **stack_b,
 	if (operation == 'a')
 	{
 		if (reverse_rotate_stack(stack_a) == 0 && print == TRUE)
-			write(1, "rra\n", 5);
+			write(1, "rra\n", 4);
 	}
 	else if (operation == 'b')
 	{
 		if (reverse_rotate_stack(stack_b) == 0 && print == TRUE)
-			write(1, "rrb\n", 5);
+			write(1, "rrb\n", 4);
 	}
 	else if (operation == 'r')
 	{
 		err[0] = reverse_rotate_stack(stack_a);
 		err[1] = reverse_rotate_stack(stack_b);
 		if ((err[0] == 0 || err[1] == 0) && print == TRUE)
-			write(1, "rrr\n", 5);
+			write(1, "rrr\n", 4);
 	}
 }
 

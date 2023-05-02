@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:26:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 01:55:52 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/02 03:43:34 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	push(t_list **stack_a, t_list **stack_b, char operation, int print)
 		*stack_a = *stack_b;
 		*stack_b = tmp;
 		if (print == TRUE)
-			write(1, "pa\n", 4);
+			write(1, "pa\n", 3);
 	}
 	else if (operation == 'b')
 	{
@@ -36,7 +36,7 @@ void	push(t_list **stack_a, t_list **stack_b, char operation, int print)
 		*stack_b = *stack_a;
 		*stack_a = tmp;
 		if (print == TRUE)
-			write(1, "pb\n", 4);
+			write(1, "pb\n", 3);
 	}
 }
 

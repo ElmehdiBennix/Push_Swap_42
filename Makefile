@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/23 00:14:00 by ebennix           #+#    #+#              #
-#    Updated: 2023/03/26 05:31:54 by ebennix          ###   ########.fr        #
+#    Updated: 2023/05/02 02:24:45 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ FILES  :=  Mandatory/push_swap		parsing/get_node			parsing/valid_args											
 		   utils/lib/ft_split		utils/lib/ft_strdup			utils/lib/ft_strjoin		utils/lib/ft_lstfree			\
 		   utils/lib/ft_strlen		utils/lib/ft_isdigit			 														\
 		   utils/ps/error			utils/ps/init				utils/ps/get_index     		utils/ps/under_five				\
-		   utils/ps/above_five																								\
+		   utils/ps/above_five		Bonus/checker							utils/gnl/get_next_line			utils/lib/ft_strchr						utils/lib/ft_strncmp								\
 
 M_FILES := Mandatory/mandatory_main																							\
 

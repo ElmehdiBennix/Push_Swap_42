@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 16:27:05 by ebennix           #+#    #+#             */
-/*   Updated: 2023/03/26 01:51:52 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/02 03:44:00 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ void	rotate(t_list **stack_a, t_list **stack_b, char operation, int print)
 	if (operation == 'a')
 	{
 		if (rotate_stack(stack_a) == 0 && print == TRUE)
-			write(1, "ra\n", 4);
+			write(1, "ra\n", 3);
 	}
 	else if (operation == 'b')
 	{
 		if (rotate_stack(stack_b) == 0 && print == TRUE)
-			write(1, "rb\n", 4);
+			write(1, "rb\n", 3);
 	}
 	else if (operation == 'r')
 	{
 		err[0] = rotate_stack(stack_a);
 		err[1] = rotate_stack(stack_b);
 		if ((err[0] == 0 || err[1] == 0) && print == TRUE)
-			write(1, "rr\n", 4);
+			write(1, "rr\n", 3);
 	}
 }
 
