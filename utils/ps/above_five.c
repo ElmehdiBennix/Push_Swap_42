@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 00:06:01 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/02 21:48:54 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/05/07 04:15:20 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static	void	push_to_b(t_list **stack_a, t_list **stack_b,
 				push(stack_a, stack_b, 'b', TRUE);
 			else
 			{
-				push(stack_a, stack_b, 'b', TRUE); // if size_b > 2 rotate
+				push(stack_a, stack_b, 'b', TRUE);
 				rotate(stack_a, stack_b, 'b', TRUE);
 			}
 			chunk--;
@@ -36,28 +36,80 @@ static	void	push_to_b(t_list **stack_a, t_list **stack_b,
 	}
 }
 
+// {return == 1 : {last <= before_last} ; return == 2 : before_last < last}
+int	which_has_fewer_moves(int stack_size, int last, int before_last_index)
+{
+	int	mv_last = 0;
+	int	mv_bef = 0;
+	int	half = stack_size / 2;
+
+	// printf("===> last=%d | before=%d | len = %d \n", last, before_last_index, stack_size);
+	if (last <= half)
+		mv_last = last;
+	else if (last > half)
+		mv_last = stack_size - last +1;
+
+	if (before_last_index <= half)
+		mv_bef = before_last_index;
+	else if (before_last_index > half)
+		mv_bef = stack_size - before_last_index +1;
+
+	if (mv_last <= mv_bef)
+		return (1);
+	else if (mv_bef < mv_last)
+		return (2);
+	return (0);
+}
+
 static	void	push_to_a(t_list **stack_a, t_list **stack_b, int lstlen)
 {
-	int	index;
-	int	index2;
-
-	while (*stack_b)
+	int	last = 0;
+	int	before_last_index = 0; 
+	int	less_moves = 0;
+	int	bool = 0;
+	while (lstlen > 0)
 	{
+		bool = 0;
 		init_index(*stack_b);
-		index = get_index(*stack_b, lstlen);
-		index2 = get_index(*stack_b, lstlen - 1);
-		if ((*stack_b)->position == lstlen)
+		last = get_index(*stack_b, lstlen - 1); // 99
+		before_last_index = get_index(*stack_b, lstlen - 2); // 98
+		less_moves = which_has_fewer_moves(lstlen - 1, last, before_last_index);
+		// printf("last=%d | before=%d | len = %d | lessmoves=%d \n", last, before_last_index, lstlen, less_moves);
+        if (less_moves == 2)
 		{
-			push(stack_a, stack_b, 'a', TRUE);
-			lstlen--;
+			// printf("[les_mv=2]\n");
+			if (before_last_index <= (lstlen / 2))
+				while (before_last_index != (*stack_b)->index)
+					rotate(stack_a, stack_b, 'b', TRUE); // rb
+			else
+				while (before_last_index != (*stack_b)->index)
+					reverse_rotate(stack_a, stack_b, 'b', TRUE); // rrb
+			// printf("pos= %d | idx = %d\n", (*stack_b)->position, (*stack_b)->index);
+			push(stack_a, stack_b, 'a', TRUE); // pa
+			init_index(*stack_b);
+			lstlen -= 1;
+			bool = 1;
 		}
-		else if (index <= lstlen / 2)
-			rotate(stack_a, stack_b, 'b', TRUE);
-		else if (index >= lstlen / 2)
-			reverse_rotate(stack_a, stack_b, 'b', TRUE);
+		// {	
+		if (bool == 1)
+			last = get_index(*stack_b, lstlen); // 99
+		// 	before_last_index = get_index(*stack_b, lstlen - 2); // 98
+		// }
+		// printf("[les_mv=1]\n");
+		if (last <= (lstlen / 2))
+			while (last != (*stack_b)->index)
+				rotate(stack_a, stack_b, 'b', TRUE); // rb
+		else
+			while (last != (*stack_b)->index)
+				reverse_rotate(stack_a, stack_b, 'b', TRUE); // rrb
+		// printf("pos= %d | idx = %d\n", (*stack_b)->position, (*stack_b)->index);
+		push(stack_a, stack_b, 'a', TRUE); // pa
+		lstlen--;
+		if (bool == 1)
+			swap(stack_a, stack_b, 'a', TRUE); // sa
 	}
 }
-// double check
+
 void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide)
 {
 	int	chunk;
@@ -71,6 +123,6 @@ void	sort_chunks(int size, t_list **stack_a, t_list **stack_b, int divide)
 		push_to_b(stack_a, stack_b, chunk, reset);
 		reset += chunk;
 	}
-	lstlen = ft_lstsize(*stack_b) - 1;
+	lstlen = ft_lstsize(*stack_b);
 	push_to_a(stack_a, stack_b, lstlen);
 }
