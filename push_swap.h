@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 19:05:38 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/07 03:17:10 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/06/02 09:50:12 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -33,9 +34,9 @@ typedef struct node
 }				t_list;
 
 int		checker(int ac, char **av);
-int	position_checker(t_list	**stack_a, t_list	**stack_b, int flag);
+int		position_checker(t_list	**stack_a, t_list	**stack_b, bool flag);
 int		push_swap(int ac, char **av);
-int	get_index(t_list *stack, int position);
+int		get_index(t_list *stack, int position);
 
 //parsing
 void	check_valid(char **av);

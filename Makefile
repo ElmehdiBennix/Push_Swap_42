@@ -6,7 +6,7 @@
 #    By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/23 00:14:00 by ebennix           #+#    #+#              #
-#    Updated: 2023/05/02 02:24:45 by ebennix          ###   ########.fr        #
+#    Updated: 2023/06/02 10:11:38 by ebennix          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,14 +25,13 @@ FILES  :=  Mandatory/push_swap		parsing/get_node			parsing/valid_args											
 		   utils/lib/ft_atoi		utils/lib/ft_lstadd_back	utils/lib/ft_lstadd_front	utils/lib/ft_lstcreate_back		\
 		   utils/lib/ft_lstlast		utils/lib/ft_lstnew			utils/lib/ft_lstsize		utils/lib/ft_lstcreate_front	\
 		   utils/lib/ft_split		utils/lib/ft_strdup			utils/lib/ft_strjoin		utils/lib/ft_lstfree			\
-		   utils/lib/ft_strlen		utils/lib/ft_isdigit			 														\
+		   utils/lib/ft_strlen		utils/lib/ft_isdigit		utils/lib/ft_strchr			utils/ps/position_checker		\
 		   utils/ps/error			utils/ps/init				utils/ps/get_index     		utils/ps/under_five				\
-		   utils/ps/above_five		Bonus/checker							utils/gnl/get_next_line			utils/lib/ft_strchr						utils/lib/ft_strncmp								\
+		   utils/ps/above_five																								\
 
-M_FILES := Mandatory/mandatory_main																							\
+M_FILES := Mandatory/mandatory_main
 
-B_FILES := Bonus/bonus_main			Bonus/checker				utils/gnl/get_next_line		utils/lib/ft_strchr				\
-		   utils/lib/ft_strncmp																								\
+B_FILES := Bonus/bonus_main			utils/lib/ft_strncmp		utils/gnl/get_next_line		Bonus/checker 					\
 
 M_SRC := $(M_FILES:=.c) $(FILES:=.c)
 M_OBJ := $(M_SRC:.c=.o)

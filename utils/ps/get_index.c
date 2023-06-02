@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 18:19:19 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/07 04:15:06 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/06/02 09:30:44 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ int	get_index(t_list *stack, int position)
 	t_list	*arrow;
 
 	arrow = stack;
-	// init_position(stack);
 	while (arrow->next != NULL && arrow->position != position)
 		arrow = arrow->next;
 	index = arrow->index;
-	// printf("\n====> pos_returned = %d\n", arrow->position);
 	return (index);
 }

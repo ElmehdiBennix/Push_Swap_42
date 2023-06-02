@@ -6,7 +6,7 @@
 /*   By: ebennix <ebennix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 22:13:37 by ebennix           #+#    #+#             */
-/*   Updated: 2023/05/07 03:16:39 by ebennix          ###   ########.fr       */
+/*   Updated: 2023/06/02 09:43:52 by ebennix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	push_swap(int ac, char **av)
 	size = ft_lstsize(stack_a);
 	init_index(stack_a);
 	init_position(stack_a);
-	if (position_checker(&stack_a,&stack_b,0) == 0)
+	if (position_checker(&stack_a, &stack_b, 0) == 0)
 		return (0);
 	if (size <= 5)
 		sort_under_five(size, &stack_a, &stack_b);
