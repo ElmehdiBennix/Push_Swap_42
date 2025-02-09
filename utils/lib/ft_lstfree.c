@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	ft_lstfree(void *stack)
 {
@@ -18,7 +18,7 @@ void	ft_lstfree(void *stack)
 
 	arrow = stack;
 	while (arrow)
-	{		
+	{
 		free(arrow);
 		arrow = arrow -> next;
 	}

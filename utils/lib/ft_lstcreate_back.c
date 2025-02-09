@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	ft_lstcreate_back(t_list **lst, int content)
 {

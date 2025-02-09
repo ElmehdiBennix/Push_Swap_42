@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../../inc/push_swap.h"
 
 static	int	fewer_moves(int stack_size, int last, int before_last_index)
 {

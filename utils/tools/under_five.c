@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../../inc/push_swap.h"
 
 static void	under_five_to_b(t_list **stack_a, t_list **stack_b, int position)
 {

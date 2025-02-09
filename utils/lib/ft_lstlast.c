@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../push_swap.h"
+#include "../../inc/push_swap.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {

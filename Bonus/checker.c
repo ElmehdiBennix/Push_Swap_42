@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../inc/push_swap.h"
 
 static	void	exec_operation(char *line, t_list **stack_a, t_list **stack_b)
 {
