@@ -63,7 +63,7 @@ fclean : clean
 
 re : fclean all
 
-git :
+push :
 	git add .
 	git status
 	git commit -m "$(m)"
@@ -71,4 +71,4 @@ git :
 
 # **************************************************************************** #
 
-.PHONY : all bonus clean fclean re git
+.PHONY : all bonus clean fclean re push
