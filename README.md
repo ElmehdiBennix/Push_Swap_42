@@ -76,7 +76,3 @@ The program returns an `Error` message for the following cases:
 - `make clean`: Remove object files.
 - `make fclean`: Remove executables and object files.
 - `make re`: Recompile everything.
-
-## License
-This project is developed for educational purposes and is part of the 42 curriculum.
-
