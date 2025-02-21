@@ -1,7 +1,20 @@
 # push_swap
 
 ## Introduction
-The `push_swap` project is an algorithmic challenge that involves sorting a set of integers using two stacks (`a` and `b`) with a limited set of operations. The objective is to find the most efficient sorting solution with the fewest operations.
+The `push_swap` project is an algorithmic challenge that involves sorting a set of integers using two stacks (`a` and `b`) with a limited set of operations described below. The objective is to find the most efficient sorting solution with the fewest operations.
+
+### Available Operations
+- `sa` (swap a): Swap the first two elements of stack `a`.
+- `sb` (swap b): Swap the first two elements of stack `b`.
+- `ss`: Perform `sa` and `sb` simultaneously.
+- `pa`: Push the first element from stack `b` to stack `a`.
+- `pb`: Push the first element from stack `a` to stack `b`.
+- `ra` (rotate a): Shift all elements of `a` up by one.
+- `rb` (rotate b): Shift all elements of `b` up by one.
+- `rr`: Perform `ra` and `rb` simultaneously.
+- `rra` (reverse rotate a): Shift all elements of `a` down by one.
+- `rrb` (reverse rotate b): Shift all elements of `b` down by one.
+- `rrr`: Perform `rra` and `rrb` simultaneously.
 
 ## Features
 - Implements an optimized sorting algorithm for stack sorting.
@@ -36,19 +49,6 @@ To check if the output is correct, use:
 ./push_swap 4 67 3 87 23 | ./checker 4 67 3 87 23
 ```
 If the sequence is correctly sorted, `checker` will return `OK`, otherwise, it will return `KO`.
-
-### Available Operations
-- `sa` (swap a): Swap the first two elements of stack `a`.
-- `sb` (swap b): Swap the first two elements of stack `b`.
-- `ss`: Perform `sa` and `sb` simultaneously.
-- `pa`: Push the first element from stack `b` to stack `a`.
-- `pb`: Push the first element from stack `a` to stack `b`.
-- `ra` (rotate a): Shift all elements of `a` up by one.
-- `rb` (rotate b): Shift all elements of `b` up by one.
-- `rr`: Perform `ra` and `rb` simultaneously.
-- `rra` (reverse rotate a): Shift all elements of `a` down by one.
-- `rrb` (reverse rotate b): Shift all elements of `b` down by one.
-- `rrr`: Perform `rra` and `rrb` simultaneously.
 
 ## Chunk-Based Sorting Algorithm
 The sorting approach used in this project is a **chunk-based sorting algorithm**. Instead of sorting all numbers at once, the list is divided into smaller **chunks** based on predefined size thresholds. The sorting process follows these steps:
